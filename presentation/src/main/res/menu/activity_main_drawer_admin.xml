@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/my_task"
+            android:actionLayout="@layout/employee_task_item"
+            android:title="My task" />
+        <item
+            android:id="@+id/brand_company"
+            android:title="Brand and Company" />
+        <item
+            android:id="@+id/view_edit_employees"
+            android:title="View and Edit Employees" />
+        <item
+            android:id="@+id/employees_task"
+            android:title="Employees Task" />
+        <item
+            android:id="@+id/customerquery"
+            android:title="Customer Query" />
+
+
+        <item
+            android:id="@+id/leave_information"
+            android:title="Leave Information" />
+        <item
+            android:id="@+id/holidays_list"
+            android:title="Holidays List" />
+        <item
+            android:id="@+id/vendor"
+            android:title="Vendor" />
+        <item
+            android:id="@+id/signOut"
+            android:title="Sign Out" />
+
+
+    </group>
+
+
+</menu>

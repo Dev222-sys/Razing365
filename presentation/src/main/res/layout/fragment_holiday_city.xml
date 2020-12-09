@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    tools:context="com.razinggroup.presentation.com.razinggroups.presentation.ui.holiday.HolidayCityFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="IVP/IVS Holidays"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/fragment_holiday_city_delhi"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@color/colorGrey"
+            android:gravity="center"
+            android:text="Delhi"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/fragment_holiday_city_kolkata"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="@color/colorGrey"
+            android:gravity="center"
+            android:text="Kolkata"
+            android:textColor="@color/colorBlack" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/fragment_holiday_city_mumbai"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@color/colorGrey"
+            android:gravity="center"
+            android:text="Mumbai"
+
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/fragment_holiday_city_bangalore"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="@color/colorGrey"
+            android:gravity="center"
+            android:text="Bangalore"
+            android:textColor="@color/colorBlack" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/fragment_holiday_city_sri_lanka"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@color/colorGrey"
+            android:gravity="center"
+            android:text="SriLanka"
+            android:textColor="@color/colorBlack" />
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+</LinearLayout>

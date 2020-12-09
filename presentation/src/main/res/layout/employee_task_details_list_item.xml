@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#10000000"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title - "
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/employee_task_detail_list_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="simple task" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details - "
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/employee_task_detail_list_item_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="simple task" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Assigned - "
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/employee_task_detail_list_item_assigned"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="simple task" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deadline - "
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/employee_task_detail_list_item_deadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="simple task" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="File - "
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/employee_task_detail_list_item_file"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="n/a" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/employee_task_detail_list_item_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorRed"
+            android:padding="8dp"
+            android:text="task Closed"
+            android:textColor="@color/colorWhite" />
+
+    </LinearLayout>
+
+</RelativeLayout>

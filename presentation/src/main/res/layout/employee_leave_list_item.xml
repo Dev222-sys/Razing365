@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#10000000"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/employee_leave_list_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Title"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/employee_leave_list_item_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/employee_leave_list_item_title"
+            android:layout_marginLeft="8dp"
+            android:text="Apr 26,2019" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/employee_leave_list_item_title"
+            android:layout_marginLeft="8dp"
+            android:layout_toEndOf="@+id/employee_leave_list_item_start_date"
+            android:text="To" />
+
+        <TextView
+            android:id="@+id/employee_leave_list_item_end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/employee_leave_list_item_title"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/employee_leave_list_item_start_date"
+            android:text="Apr 29,2019" />
+
+        <TextView
+            android:id="@+id/employee_leave_list_item_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/employee_leave_list_item_start_date"
+            android:layout_margin="8dp"
+            android:text="description" />
+
+        <Button
+            android:id="@+id/employee_leave_list_item_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/employee_leave_list_item_desc"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:background="@color/colorRed"
+            android:text="Rejected"
+            android:textColor="@color/colorWhite" />
+
+    </RelativeLayout>
+</RelativeLayout>

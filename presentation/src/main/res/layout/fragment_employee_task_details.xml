@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/fragment_employee_task_details_welcome_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Welcome Employee"
+        android:textColor="@color/colorBlack" />
+
+    <ProgressBar
+        android:id="@+id/fragment_employee_task_details_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/fragment_employee_task_details_error_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="Error" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fragment_employee_task_details_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/fragment_employee_task_details_welcome_tv"></android.support.v7.widget.RecyclerView>
+</RelativeLayout>

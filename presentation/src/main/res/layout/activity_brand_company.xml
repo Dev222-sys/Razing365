@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.razinggroup.presentation.com.razinggroups.presentation.ui.brandCompany.BrandCompanyActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/activity_brand_company_header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorGrey">
+
+        <ImageView
+            android:id="@+id/activity_brand_company_header_home_iv"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:padding="8dp"
+            android:layout_alignParentLeft="true"
+            app:srcCompat="@drawable/cross_red" />
+
+        <TextView
+            android:id="@+id/activity_brand_company_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/activity_brand_company_header_home_iv"
+            android:padding="5dp"
+            android:text="BRAND AND COMPANY"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            app:srcCompat="@drawable/logo_black" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/activity_brand_company_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/activity_brand_company_header_layout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/activity_brand_company_frame_inner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:id="@+id/activity_brand_company_add_company_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrey"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/activity_brand_company_add_company_layout_iv"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/plus_black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activity_brand_company_add_company_layout_iv"
+                        android:layout_centerHorizontal="true"
+                        android:text="Add Company"
+                        android:textColor="@color/colorBlack" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/activity_brand_company_view_company_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrey"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/activity_brand_company_view_company_layout_iv"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginVertical="20dp"
+                        android:src="@drawable/edit_black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activity_brand_company_view_company_layout_iv"
+                        android:layout_centerHorizontal="true"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="View and Edit Company"
+                        android:textColor="@color/colorBlack" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:id="@+id/activity_brand_company_add_brand_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrey"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/activity_brand_company_add_brand_layout_iv"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginVertical="20dp"
+                        android:src="@drawable/plus_black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activity_brand_company_add_brand_layout_iv"
+                        android:layout_centerHorizontal="true"
+                        android:text="Add Brand"
+                        android:textColor="@color/colorBlack" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/activity_brand_company_view_brand_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrey"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/activity_brand_company_view_brand_layout_iv"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginVertical="20dp"
+                        android:src="@drawable/edit_black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activity_brand_company_view_brand_layout_iv"
+                        android:layout_centerHorizontal="true"
+                        android:maxLines="1"
+                        android:text="View and Edit Brand"
+                        android:textColor="@color/colorBlack" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</RelativeLayout>

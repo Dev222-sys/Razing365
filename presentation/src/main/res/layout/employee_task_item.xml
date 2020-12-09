@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="20dp">
+
+    <RelativeLayout
+        android:id="@+id/employee_task_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_grey_corners">
+
+        <ImageView
+            android:id="@+id/employee_task_item_calender_iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/calender_grey" />
+
+        <TextView
+            android:id="@+id/employee_task_item_task_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_marginVertical="10dp"
+            android:layout_toRightOf="@+id/employee_task_item_calender_iv"
+            android:text="RANDOM TASK NAME"
+             />
+
+        <TextView
+            android:id="@+id/employee_task_item_employee_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_toLeftOf="@+id/employee_task_item_status_iv"
+            android:text="NAME"
+             />
+
+        <ImageView
+            android:id="@+id/employee_task_item_status_iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/check_green" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

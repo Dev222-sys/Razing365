@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp">
+
+    <RelativeLayout
+        android:id="@+id/employee_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_grey_corners">
+
+        <ImageView
+            android:id="@+id/employee_item_calender_iv"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/profile_grey" />
+
+        <TextView
+            android:id="@+id/employee_item_employee_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_marginVertical="10dp"
+            android:layout_toRightOf="@+id/employee_item_calender_iv"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="RANDOM EMPLOYEE NAME" />
+
+        <TextView
+            android:id="@+id/employee_item_company_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="15dp"
+            android:layout_toRightOf="@+id/employee_item_employee_name_tv"
+            android:gravity="end"
+            android:text="NAME" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

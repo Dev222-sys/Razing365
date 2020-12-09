@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/activity_brand_manipulate_header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorGrey"
+        android:elevation="50dp">
+
+        <TextView
+            android:id="@+id/activity_brand_manipulate_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:padding="5dp"
+            android:text="ADD BRAND"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/activity_brand_manipulate_cross_btn"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:padding="8dp"
+            app:srcCompat="@drawable/cross_red" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/activity_brand_manipulate_header_layout">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ProgressBar
+                android:id="@+id/activity_brand_manipulate_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_brand_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Brand" />
+
+            <EditText
+                android:id="@+id/activity_brand_manipulate_brand_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_brand_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Brand"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_company_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_brand_et"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Company" />
+
+
+            <Spinner
+                android:id="@+id/activity_manipulate_company_name_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/activity_brand_manipulate_company_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edittextupdatedesign"
+                android:spinnerMode="dropdown"
+                android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+                <requestFocus />
+            </Spinner>
+
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/activity_brand_manipulate_company_tv"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:padding="4dp"
+                android:layout_marginRight="30dp"
+                android:src="@drawable/bottom_arrow" />
+
+
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_brand_email_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_manipulate_company_name_spinner"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Brand Email" />
+
+            <EditText
+                android:id="@+id/activity_brand_manipulate_brand_email_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_brand_email_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Brand Email"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_brand_mobile_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_brand_email_et"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Brand's Mobile" />
+
+            <EditText
+                android:id="@+id/activity_brand_manipulate_brand_mobile_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_brand_mobile_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+
+                android:hint="Enter Brand's Mobile"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_street_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_brand_mobile_et"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Street" />
+
+            <EditText
+                android:id="@+id/activity_brand_manipulate_street_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_street_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Street"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_city_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_street_et"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="City" />
+
+            <EditText
+                android:id="@+id/activity_brand_manipulate_city_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_city_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+
+                android:hint="Enter City"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_postal_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_city_et"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Postal Code" />
+
+            <EditText
+                android:id="@+id/activity_brand_manipulate_postal_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_postal_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+
+                android:hint="Enter Postal Code"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_country_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_postal_et"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Country" />
+
+
+            <EditText
+                android:id="@+id/activity_brand_manipulate_country_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_country_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Country"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_division_name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_country_et"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Division Name" />
+
+            <EditText
+                android:id="@+id/activity_brand_manipulate_division_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_division_name_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Division Name"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_division_email_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_division_name_et"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Division Email" />
+
+            <EditText
+                android:id="@+id/activity_brand_manipulate_division_email_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_division_email_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Division Email"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/activity_brand_manipulate_division_contact_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_division_email_et"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Division Name" />
+
+            <EditText
+                android:id="@+id/activity_brand_manipulate_division_contact_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_division_contact_tv"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Division Name"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/activity_brand_manipulate_submit_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_division_contact_et"
+                android:layout_alignParentLeft="true"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/colorGreen"
+                android:text="Submit"
+                android:textColor="@color/colorWhite" />
+
+            <Button
+                android:id="@+id/activity_brand_manipulate_delete_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_brand_manipulate_division_contact_et"
+                android:layout_alignParentRight="true"
+                android:layout_marginVertical="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/colorRed"
+                android:text="Delete"
+                android:textColor="@color/colorWhite" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

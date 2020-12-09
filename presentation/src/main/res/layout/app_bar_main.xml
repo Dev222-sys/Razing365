@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.razinggroup.presentation.com.razinggroups.presentation.ui.main.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorDarkGrey"
+            android:visibility="gone"
+            app:popupTheme="@style/AppTheme.PopupOverlay"></android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_main_header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorGrey">
+
+        <ImageView
+            android:id="@+id/activity_main_header_home_iv"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:padding="8dp"
+            android:layout_alignParentLeft="true"
+            app:srcCompat="@drawable/hamburger" />
+
+        <TextView
+            android:id="@+id/activity_main_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/activity_main_header_home_iv"
+            android:padding="5dp"
+            android:text="DASHBOARD"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            app:srcCompat="@drawable/logo_black" />
+
+    </RelativeLayout>
+
+
+
+    <FrameLayout
+        android:id="@+id/activity_main_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/activity_main_footer_layout"
+        android:layout_below="@+id/activity_main_header_layout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </FrameLayout>
+
+    <!--footer-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/activity_main_footer_layout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:layout_alignParentBottom="true">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/activity_main_footer_add_btn"-->
+    <!--android:layout_width="45dp"-->
+    <!--android:layout_height="45dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:background="@drawable/add_icon"-->
+    <!--/>-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="60dp"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:background="@color/colorGrey">-->
+
+
+    <!--<ImageView-->
+    <!--android:id="@+id/activity_main_footer_dashboard"-->
+    <!--android:layout_width="70dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_marginVertical="5dp"-->
+    <!--android:layout_marginLeft="20dp"-->
+    <!--app:srcCompat="@drawable/dashboard_icon_red" />-->
+
+
+    <!--<ImageView-->
+    <!--android:id="@+id/activity_main_footer_personal_task"-->
+    <!--android:layout_width="70dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:layout_toRightOf="@+id/activity_main_footer_dashboard"-->
+    <!--app:srcCompat="@drawable/personal_task_icon" />-->
+
+
+    <!--<ImageView-->
+
+    <!--android:id="@+id/activity_main_footer_employee_task"-->
+    <!--android:layout_width="70dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:layout_toLeftOf="@+id/activity_main_footer_holiday_list"-->
+    <!--app:srcCompat="@drawable/employee_task_icon" />-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/activity_main_footer_holiday_list"-->
+    <!--android:layout_width="70dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="20dp"-->
+    <!--app:srcCompat="@drawable/holiday_list" />-->
+
+    <!--</RelativeLayout>-->
+    <!--</RelativeLayout>-->
+    <!--<include layout="@layout/content_main" />-->
+    <RelativeLayout
+        android:id="@+id/activity_main_footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/activity_main_footer_add_icon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:elevation="60dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/add_icon_red" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorGrey">
+
+            <LinearLayout
+                android:id="@+id/activity_main_footer_dashboard"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/activity_main_footer_dashboard_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/dashboard_grey" />
+
+
+                <TextView
+                    android:id="@+id/activity_main_footer_dashboard_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="DASHBOARD"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="8sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_main_footer_personal_task"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/activity_main_footer_dashboard"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/activity_main_footer_personal_task_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/personal_task_grey" />
+
+
+                <TextView
+                    android:id="@+id/activity_main_footer_personal_task_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="PERSONAL TASKS"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="8sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_main_footer_employee_task"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/activity_main_footer_holiday_list"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/activity_main_footer_employee_task_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/employee_tasks_grey" />
+
+
+                <TextView
+                    android:id="@+id/activity_main_footer_employee_task_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="EMPLOYEE TASKS"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="8sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_main_footer_holiday_list"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/activity_main_footer_holiday_list_iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/holiday_list_grey" />
+
+
+                <TextView
+                    android:id="@+id/activity_main_footer_holiday_list_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="HOLIDAY LIST"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="8sp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="8dp"
+        android:text="Apply For Leave"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/fragment_employee_apply_leave_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/round_grey_corners"
+        android:hint="Enter Leave Title"
+        android:maxLines="1"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/fragment_employee_apply_leave_desc"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/round_grey_corners"
+        android:hint="Description"
+        android:padding="10dp" />
+
+
+    <LinearLayout
+        android:id="@+id/fragment_employee_apply_leave_start_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/round_grey_corners"
+        android:orientation="horizontal"
+        android:weightSum="7">
+
+        <EditText
+            android:id="@+id/fragment_employee_apply_leave_start_date_et"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_weight="6"
+            android:background="@drawable/rounded_white_corners"
+            android:hint="Pick Start Date"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textColor="#000000" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:foregroundGravity="center"
+            android:src="@drawable/calender_grey" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_employee_apply_leave_end_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/round_grey_corners"
+        android:orientation="horizontal"
+        android:weightSum="7">
+
+        <EditText
+            android:id="@+id/fragment_employee_apply_leave_end_date_et"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_weight="6"
+            android:background="@drawable/rounded_white_corners"
+
+            android:hint="Pick End Date"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textColor="#000000" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:foregroundGravity="center"
+            android:src="@drawable/calender_grey" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/fragment_employee_apply_leave_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorRed"
+        android:paddingHorizontal="16dp"
+        android:text="Submit"
+        android:textColor="@color/colorWhite" />
+
+    <ProgressBar
+        android:id="@+id/fragment_employee_apply_leave_pb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrey"
+        android:weightSum="10">
+
+        <ImageView
+            android:id="@+id/holiday_list_item_iv"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:layout_weight="2"
+            android:src="@drawable/calender_grey" />
+
+        <TextView
+            android:id="@+id/holiday_list_item_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:layout_marginVertical="10dp"
+            android:layout_toRightOf="@+id/holiday_list_item_iv"
+            android:layout_weight="5"
+            android:ellipsize="end"
+            android:text="RANDOM TASK NAME" />
+
+        <TextView
+            android:id="@+id/holiday_list_item_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:layout_weight="3"
+            android:gravity="end"
+            android:text="22-09-1995" />
+    </LinearLayout>
+</RelativeLayout>

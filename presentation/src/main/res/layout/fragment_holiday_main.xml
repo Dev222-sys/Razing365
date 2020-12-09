@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    tools:context="com.razinggroup.presentation.com.razinggroups.presentation.ui.holiday.HolidayMainFragment">
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:id="@+id/fragment_holiday_main_du"
+        android:background="@color/colorGrey"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/calender_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="DU HOLIDAYS"
+            android:textColor="@color/colorBlack" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:id="@+id/fragment_holiday_main_ivp"
+        android:background="@color/colorGrey"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/calender_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="IVP/IVS Holidays"
+            android:textColor="@color/colorBlack" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
