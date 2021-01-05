@@ -30,14 +30,11 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     @Inject
     @Named("LoginActivity")
     ViewModelProvider.Factory viewModelFactory;
-
     LoginViewModel loginViewModel;
     EditText userNameEt, passwordEt;
     Button loginBtn;
     FrameLayout progressBarLayout;
-
     CheckBox checkBox;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

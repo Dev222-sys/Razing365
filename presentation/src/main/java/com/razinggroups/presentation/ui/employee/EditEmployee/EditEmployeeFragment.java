@@ -90,16 +90,21 @@ public class EditEmployeeFragment extends BaseFragment<EditEmployeeViewModel> im
 
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
                 viewModel.updateEmployee(createRequest());
+
             }
         });
 
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 viewModel.deleteEmployee(empId);
+
             }
         });
 

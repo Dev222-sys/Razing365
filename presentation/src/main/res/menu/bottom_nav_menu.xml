@@ -20,4 +20,11 @@
         android:icon="@drawable/leave_information_grey"
         android:title="Leave Information"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_customer_querry"
+        android:enabled="true"
+        android:icon="@drawable/leave_information_grey"
+        android:title="Customer Query"
+        app:showAsAction="ifRoom" />
 </menu>

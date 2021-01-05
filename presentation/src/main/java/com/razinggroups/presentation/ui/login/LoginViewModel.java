@@ -11,11 +11,13 @@ import io.reactivex.observers.DisposableSingleObserver;
 
 public class LoginViewModel extends BaseViewModel<LoginNavigator> {
 
+
     LoginUseCase loginUseCase;
     SetCredentialsUseCase setCredentialsUseCase;
     GetCredentialsUseCase getCredentialsUseCase;
 
     public LoginViewModel(LoginUseCase loginUseCase, SetCredentialsUseCase setCredentialsUseCase, GetCredentialsUseCase getCredentialsUseCase) {
+
         this.loginUseCase = loginUseCase;
         this.setCredentialsUseCase = setCredentialsUseCase;
         this.getCredentialsUseCase = getCredentialsUseCase;

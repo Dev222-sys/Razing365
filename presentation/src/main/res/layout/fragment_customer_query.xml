@@ -6,33 +6,77 @@
     tools:context=".ui.CustomerQuery.CustomerQueryFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
+
             <ProgressBar
-                android:id="@+id/fragment_employee_detail_progress_bar"
+                android:id="@+id/CustomerQueryFragment_progress_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:layout_centerHorizontal="true" />
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/lead_type_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Lead Type" />
+
+
+            <Spinner
+                android:id="@+id/lead_type_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/lead_type_tv"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/edittextupdatedesign"
+                android:spinnerMode="dropdown"
+                android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+                <requestFocus />
+            </Spinner>
+
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/lead_type_tv"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:padding="4dp"
+                android:layout_marginRight="35dp"
+                android:src="@drawable/bottom_arrow" />
+
+
+
+
 
             <TextView
                 android:id="@+id/fragment_employee_detail_nametv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
+
+                android:layout_below="@+id/lead_type_spinner"
                 android:layout_marginRight="20dp"
                 android:text="Name" />
 
             <EditText
-                android:id="@+id/fragment_employee_detail_name_et"
+                android:id="@+id/fragment_customer_query_name_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fragment_employee_detail_nametv"
@@ -49,13 +93,15 @@
                 android:id="@+id/fragment_employee_detail_officelandtv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_name_et"
+                android:layout_below="@+id/fragment_customer_query_name_et"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:text="Company Email ID" />
 
             <EditText
-                android:id="@+id/fragment_employee_detail_officelandet"
+
+
+                android:id="@+id/fragment_customer_query_officelandet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fragment_employee_detail_officelandtv"
@@ -71,12 +117,12 @@
                 android:id="@+id/fragment_employee_detail_officialemailidtv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_officelandet"
+                android:layout_below="@+id/fragment_customer_query_officelandet"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:text="Contact No." />
             <EditText
-                android:id="@+id/fragment_employee_detail_mobileetno"
+                android:id="@+id/fragment_customer_query_mobileetno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fragment_employee_detail_officialemailidtv"
@@ -93,7 +139,7 @@
                 android:id="@+id/fragment_employee_detail_officialemailidet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_mobileetno"
+                android:layout_below="@+id/fragment_customer_query_mobileetno"
                 android:layout_marginVertical="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -104,333 +150,103 @@
                 android:padding="10dp" />
 
             <TextView
-                android:id="@+id/fragment_employee_detail_personalemailidtv"
+                android:id="@+id/fragment_employee_detail_pasportno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fragment_employee_detail_officialemailidet"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="Personal Email ID" />
+                android:text="Passport No." />
 
             <EditText
-                android:id="@+id/fragment_employee_detail_personalemailidet"
+                android:id="@+id/fragment_customer_query_pasportnoet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_personalemailidtv"
+                android:layout_below="@+id/fragment_employee_detail_pasportno"
                 android:layout_marginVertical="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/round_grey_corners"
-                android:hint="Enter Personal Email Id"
+                android:hint="Enter Passport No."
                 android:padding="10dp" />
 
 
             <TextView
-                android:id="@+id/fragment_employee_detail_mobiletv"
+                android:id="@+id/fragment_customer_query_nationalitytv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_personalemailidet"
+                android:layout_below="@+id/fragment_customer_query_pasportnoet"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="Mobile" />
+                android:text="Nationality" />
 
             <EditText
-                android:id="@+id/fragment_employee_detail_mobileet"
+                android:id="@+id/fragment_customer_query_nationalityet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_mobiletv"
+                android:layout_below="@+id/fragment_customer_query_nationalitytv"
                 android:layout_marginVertical="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/round_grey_corners"
 
-                android:hint="Enter Mobile"
+                android:hint="Enter Nationality"
 
                 android:padding="10dp" />
-
             <TextView
-                android:id="@+id/fragment_employee_detail_Locationtv"
+                android:id="@+id/fragment_customer_query_deatilstv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_mobileet"
+                android:layout_below="@+id/fragment_customer_query_nationalityet"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="Location" />
+                android:text=" Enquiry Details" />
 
             <EditText
-                android:id="@+id/fragment_employee_detail_Locationet"
+                android:id="@+id/fragment_employee_apply_leave_desc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_Locationtv"
-                android:layout_marginVertical="10dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/fragment_customer_query_deatilstv"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enquiry Details....."
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-
-                android:hint="Enter Location"
-
                 android:padding="10dp" />
 
             <TextView
                 android:id="@+id/fragment_employee_detail_officeAddresstv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_Locationet"
+                android:layout_below="@+id/fragment_employee_apply_leave_desc"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="Office Address" />
+                android:text=" Address" />
 
             <EditText
                 android:id="@+id/fragment_employee_detail_officeAddresset"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
                 android:layout_below="@+id/fragment_employee_detail_officeAddresstv"
                 android:layout_marginVertical="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/round_grey_corners"
-                android:hint="Enter Office Address"
+                android:hint="Enter  Address"
                 android:padding="10dp" />
 
             <TextView
-                android:id="@+id/fragment_employee_detail_residenceAddresstv"
+                android:id="@+id/fragment_reference_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fragment_employee_detail_officeAddresset"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="Residence Address" />
-
-            <EditText
-                android:id="@+id/fragment_employee_detail_residenceAddresset"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_residenceAddresstv"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-                android:hint="Enter Residence Address"
-                android:padding="10dp" />
-
-            <TextView
-                android:id="@+id/fragment_employee_detail_salarytv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_residenceAddresset"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Salary(Per Month)" />
-
-            <EditText
-                android:id="@+id/fragment_employee_detail_salaryet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_salarytv"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-
-                android:hint="Enter Salary"
-
-                android:padding="10dp" />
-
-
-            <TextView
-                android:id="@+id/fragment_employee_detail_emergencycontacttv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_salaryet"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Emergency Contact Name" />
-
-            <EditText
-                android:id="@+id/fragment_employee_detail_emergencycontactet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_emergencycontacttv"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-
-                android:hint="Enter Emergency Contact Name"
-
-                android:padding="10dp" />
-
-            <TextView
-                android:id="@+id/fragment_employee_detail_emergencycontactNumbertv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_emergencycontactet"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Emergency Contact No" />
-
-            <EditText
-                android:id="@+id/fragment_employee_detail_emergencyconatctet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_emergencycontactNumbertv"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-
-                android:hint="Enter Emergency Contact Number"
-
-                android:padding="10dp" />
-
-            <TextView
-                android:id="@+id/fragment_employee_detail_dobtv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_emergencyconatctet"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Date Of Birth" />
-
-
-            <LinearLayout
-                android:id="@+id/fragment_employee_detail_dob_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_dobtv"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-                android:orientation="horizontal"
-                android:weightSum="7">
-
-                <EditText
-                    android:id="@+id/fragment_employee_detail_dobet"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="6"
-                    android:background="@drawable/rounded_white_corners"
-
-                    android:hint="Pick End Date"
-
-                    android:padding="10dp"
-                    android:textColor="#000000" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="5dp"
-                    android:foregroundGravity="center"
-                    android:src="@drawable/calender_grey" />
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/fragment_employee_detail_dojtv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_dob_layout"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="DOJ" />
-
-
-            <LinearLayout
-                android:id="@+id/fragment_employee_detail_doj_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_dojtv"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-                android:orientation="horizontal"
-                android:weightSum="7">
-
-                <EditText
-                    android:id="@+id/fragment_employee_detail_dojet"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="6"
-                    android:background="@drawable/rounded_white_corners"
-                    android:hint="Pick End Date"
-
-                    android:padding="10dp"
-                    android:textColor="#000000" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="5dp"
-                    android:foregroundGravity="center"
-                    android:src="@drawable/calender_grey" />
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/fragment_aadhartv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_employee_detail_doj_layout"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="ID No." />
-
-            <EditText
-                android:id="@+id/fragment_aadharet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_aadhartv"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-                android:hint="Enter ID No."
-
-                android:padding="10dp" />
-
-            <TextView
-                android:id="@+id/fragment_pan_no_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_aadharet"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Tax No." />
-
-            <EditText
-                android:id="@+id/fragment_pan_no_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_pan_no_tv"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-                android:hint="Enter Tax No."
-
-                android:padding="10dp" />
-
-            <TextView
-                android:id="@+id/fragment_status_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_pan_no_et"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Status" />
-
-
+                android:text="Reference Through" />
             <Spinner
                 android:id="@+id/fragment_status_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_below="@+id/fragment_status_tv"
+                android:layout_below="@+id/fragment_reference_tv"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/edittextupdatedesign"
@@ -444,7 +260,7 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_below="@+id/fragment_status_tv"
+                android:layout_below="@+id/fragment_reference_tv"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="35dp"
@@ -459,7 +275,7 @@
                 android:layout_below="@+id/fragment_status_spinner"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="Brand" />
+                android:text="Profession" />
 
 
             <Spinner
@@ -489,32 +305,18 @@
 
 
             <Button
-                android:id="@+id/fragment_employee_detail_submit_btn"
+                android:id="@+id/fragment_customerquery_submit_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fragment_Brand_spinner"
                 android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="150dp"
                 android:background="@color/colorGreen"
+                android:gravity="center"
                 android:text="Submit"
-                android:textColor="@color/colorWhite"
-
-                />
-
-            <Button
-                android:id="@+id/fragment_employee_detail_delete_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_Brand_spinner"
-                android:layout_alignParentRight="true"
-                android:layout_marginVertical="10dp"
-                android:layout_marginRight="20dp"
-                android:background="@color/colorRed"
-                android:text="Delete"
                 android:textColor="@color/colorWhite" />
-
-
         </RelativeLayout>
 
     </ScrollView>

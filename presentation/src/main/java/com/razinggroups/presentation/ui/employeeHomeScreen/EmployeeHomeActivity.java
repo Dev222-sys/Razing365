@@ -23,6 +23,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.razinggroups.data.network.RetrofitClient;
 import com.razinggroups.presentation.R;
+import com.razinggroups.presentation.ui.CustomerQuery.CustomerQueryFragment;
+import com.razinggroups.presentation.ui.CustomerQuery.CustomerSection.CustomerQueryMainFragment;
 import com.razinggroups.presentation.ui.employeeHomeScreen.EmployeeTaskDetailList.EmployeeTaskDetailListFragment;
 import com.razinggroups.presentation.ui.login.LoginActivity;
 import com.razinggroups.presentation.ui.myTask.MyTaskFragment;
@@ -119,6 +121,27 @@ public class EmployeeHomeActivity extends AppCompatActivity {
                         }
                         break;
                     }
+                    case R.id.action_customer_querry: {
+                        if (!selectedFragment.equalsIgnoreCase("MyTaskFragment")) {
+                            emptyFragmentStack();
+                            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                            CustomerQueryMainFragment customerQueryMainFragment = new CustomerQueryMainFragment();
+                            transaction.replace(R.id.activity_employee_home_frame_layout, customerQueryMainFragment);
+
+                            Bundle bundle = new Bundle();
+                           // bundle.putString("userType", "EmployeeMyTask");
+                            customerQueryMainFragment.setArguments(bundle);
+                            selectedFragment = "CustomerQueryMainFragment";
+                            transaction.commit();
+
+                            titleTv.setText("Customer Query");
+
+                            //Toast.makeText(EmployeeHomeActivity.this, "Customer Query", Toast.LENGTH_SHORT).show();
+
+
+                        }
+                        break;
+                    }
                 }
 
                 return true;
@@ -172,37 +195,7 @@ public class EmployeeHomeActivity extends AppCompatActivity {
         }
     }
 
-   public void logout()
-   {
 
-    //    Toast.makeText(EmployeeHomeActivity.this, useremail+"", Toast.LENGTH_SHORT).show();
-        Call<ResponseBody> call= RetrofitClient
-                .getInstance()
-                .getApi().logout(useremail);
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
-
-               //  Toast.makeText(EmployeeHomeActivity.this, response.toString()+"", Toast.LENGTH_SHORT).show();
-
-                        Intent i = new Intent(EmployeeHomeActivity.this, LoginActivity.class);
-                        startActivity(i);
-                        finish();
-
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-                Toast.makeText(EmployeeHomeActivity.this, "failure", Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
-
-    }
 
   public void performLogout() {
 
