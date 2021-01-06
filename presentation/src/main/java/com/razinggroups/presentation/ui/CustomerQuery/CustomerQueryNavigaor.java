@@ -8,6 +8,6 @@ public interface CustomerQueryNavigaor {
     void onError(String toString);
     void onDataLoaded(FetchAllCustomerQuerryResponse fetchAllLeavesResponse);
 
-    void onUpdateResponse(String message);
+    void onQuerySubmittionResponse(String message);
 
 }

@@ -14,6 +14,7 @@ import com.razinggroups.presentation.R;
 import com.razinggroups.presentation.ui.CustomerQuery.CustomerQueryFragment;
 import com.razinggroups.presentation.ui.employeeHomeScreen.EmployeeApplyLeave.EmployeeApplyLeaveFragment;
 import com.razinggroups.presentation.ui.employeeHomeScreen.employeeLeaveList.EmployeeLeaveListFragment;
+import com.razinggroups.presentation.ui.holiday.HolidayMainFragment;
 
 public class CustomerQueryMainFragment extends Fragment {
 
@@ -24,7 +25,7 @@ public class CustomerQueryMainFragment extends Fragment {
     }
 
     LinearLayout status, apply;
-    String empId;
+    String empId,key="";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,6 +33,10 @@ public class CustomerQueryMainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_customer_query_main, container, false);
         status = view.findViewById(R.id.fragment_customer_query_main_status);
         apply = view.findViewById(R.id.fragment_customer_query_main_apply);
+
+            key = getArguments().getString("key");
+            Toast.makeText(getActivity(), key+"", Toast.LENGTH_SHORT).show();
+
 //        empId = getArguments().getString("employeeId");
 
         status.setOnClickListener(new View.OnClickListener() {
@@ -57,15 +62,36 @@ public class CustomerQueryMainFragment extends Fragment {
             public void onClick(View v) {
 
 
-                FragmentManager manager = getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                CustomerQueryFragment customerQueryFragment=new CustomerQueryFragment();
-                transaction.replace(R.id.activity_employee_home_frame_layout, customerQueryFragment);
-                transaction.addToBackStack(null);
-                Bundle bundle = new Bundle();
-                bundle.putString("employeeId", empId);
-                customerQueryFragment.setArguments(bundle);
-                transaction.commit();
+                if (key.equals("1"))
+                {
+
+
+                    FragmentManager manager = getFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    CustomerQueryFragment customerQueryFragment=new CustomerQueryFragment();
+
+                    // activity_main_frame
+                    transaction.replace(R.id.activity_employee_home_frame_layout, customerQueryFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+
+
+
+                }
+                else {
+
+                    FragmentManager manager = getFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    CustomerQueryFragment customerQueryFragment=new CustomerQueryFragment();
+                    // activity_main_frame
+                    transaction.replace(R.id.activity_main_frame, customerQueryFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+
+                }
+
+
+
 
               //  Toast.makeText(getContext(), "Apply", Toast.LENGTH_SHORT).show();
             }

@@ -55,7 +55,8 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItemClick.onItemClick(dataList.get(getAdapterPosition()).getId());
+                    onItemClick.onItemClick(
+                            dataList.get(getAdapterPosition()).getId());
                 }
             });
         }

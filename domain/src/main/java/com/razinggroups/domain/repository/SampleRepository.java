@@ -38,8 +38,9 @@ public interface SampleRepository {
     Single<Integer> sum(int a, int b);
 
     Single<Login> login(String userName, String password);
+    //Single<Message> updateEmployee(EmployeeDetail employeeDetail);
 
-    Single<Customer>customer(String userName, String password);
+    Single<Message>customer(Customer customer);
 
 
     Single<FetchAllMyTask> fetchAllMyTask();

@@ -129,7 +129,7 @@ public class EmployeeHomeActivity extends AppCompatActivity {
                             transaction.replace(R.id.activity_employee_home_frame_layout, customerQueryMainFragment);
 
                             Bundle bundle = new Bundle();
-                           // bundle.putString("userType", "EmployeeMyTask");
+                            bundle.putString("key", "1");
                             customerQueryMainFragment.setArguments(bundle);
                             selectedFragment = "CustomerQueryMainFragment";
                             transaction.commit();

@@ -14,6 +14,9 @@
         <item
             android:id="@+id/employees_task"
             android:title="Employees Task" />
+        <item
+            android:id="@+id/customerquery"
+            android:title="Customer Query" />
 
         <item
             android:id="@+id/leave_information"

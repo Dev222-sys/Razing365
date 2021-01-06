@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.razinggroups.data.database.SampleRoomDatabase;
 import com.razinggroups.data.database.dao.SampleDao;
+import com.razinggroups.data.models.CustomerQuerry.CustomerNw;
 import com.razinggroups.data.models.Employee.EmployeeDetailNw;
 import com.razinggroups.data.models.Employee.EmployeeListNw;
 import com.razinggroups.data.models.MessageNw;
@@ -134,11 +135,81 @@ public class SampleRepositoryImpl implements SampleRepository {
         });
     }
 
+
+
     @Override
+    public Single<Message> updateEmployee(EmployeeDetail employeeDetailNw) {
+
+        EmployeeDetailNw employeeDetail = new EmployeeDetailNw(
+                employeeDetailNw.getId(),
+                employeeDetailNw.getLocation(),
+                employeeDetailNw.getName(),
+                employeeDetailNw.getDesignation(),
+                employeeDetailNw.getLandline(),
+                employeeDetailNw.getOfficialMail(),
+                employeeDetailNw.getPersonalMail(),
+                employeeDetailNw.getMobile(),
+                employeeDetailNw.getDol(),
+                employeeDetailNw.getAppointmentLetter(),
+                employeeDetailNw.getOfficeAddress(),
+                employeeDetailNw.getResidenceAddress(),
+                employeeDetailNw.getSalary(),
+                employeeDetailNw.getEmergencyName(),
+                employeeDetailNw.getEmergencyNo(),
+                employeeDetailNw.getDob(),
+                employeeDetailNw.getDoj(),
+                employeeDetailNw.getAadharNo(),
+                employeeDetailNw.getAadharCard(),
+                employeeDetailNw.getPanNo(),
+                employeeDetailNw.getPanCard(),
+                employeeDetailNw.getEducation(),
+                employeeDetailNw.getProfileImg(),
+                employeeDetailNw.getEmpStatus(),
+                employeeDetailNw.getBrandName(),
+                employeeDetailNw.getBrandId()
+        );
+        return apiInterface.updateEmployee(employeeDetail).map(new Function<MessageNw, Message>() {
+            @Override
+            public Message apply(MessageNw messageNw) throws Exception {
+                return new Message(messageNw.getMessage());
+
+            }
+        });
+    }
+
+
+
+    @Override
+    public Single<Message> customer(Customer customer) {
+        CustomerNw customerNw = new CustomerNw(
+
+                customer.getLead_type(),
+                customer.getName(),
+                customer.getCompany_email(),
+                customer.getEnquiry_details(),
+                customer.getMobile(),
+                customer.getLandline(),
+                customer.getPassport_no(),
+                customer.getNationality(),
+                customer.getReference(),
+                customer.getAddress(),
+                customer.getProfession());
+
+
+        return apiInterface.custoer_query(customerNw).map(new Function<MessageNw, Message>() {
+            @Override
+            public Message apply(MessageNw messageNw) throws Exception {
+                return new Message(messageNw.getMessage());
+
+            }
+        });
+    }
+
+    /*@Override
     public Single<Customer> customer(String userName, String password) {
         return null;
     }
-
+*/
     @Override
     public Single<com.razinggroups.domain.model.employeeTask.FetchEmployeeTask> fetchAllEmployeeTasks() {
         return apiInterface.fetchAllEmployeeTask().map(new Function<FetchEmployeeTaskNw, com.razinggroups.domain.model.employeeTask.FetchEmployeeTask>() {
@@ -508,45 +579,6 @@ public class SampleRepositoryImpl implements SampleRepository {
                 );
 
                 return employeeDetail;
-            }
-        });
-    }
-
-    @Override
-    public Single<com.razinggroups.domain.model.Message> updateEmployee(com.razinggroups.domain.model.employee.EmployeeDetail employeeDetailNw) {
-        EmployeeDetailNw employeeDetail = new EmployeeDetailNw(
-                employeeDetailNw.getId(),
-                employeeDetailNw.getLocation(),
-                employeeDetailNw.getName(),
-                employeeDetailNw.getDesignation(),
-                employeeDetailNw.getLandline(),
-                employeeDetailNw.getOfficialMail(),
-                employeeDetailNw.getPersonalMail(),
-                employeeDetailNw.getMobile(),
-                employeeDetailNw.getDol(),
-                employeeDetailNw.getAppointmentLetter(),
-                employeeDetailNw.getOfficeAddress(),
-                employeeDetailNw.getResidenceAddress(),
-                employeeDetailNw.getSalary(),
-                employeeDetailNw.getEmergencyName(),
-                employeeDetailNw.getEmergencyNo(),
-                employeeDetailNw.getDob(),
-                employeeDetailNw.getDoj(),
-                employeeDetailNw.getAadharNo(),
-                employeeDetailNw.getAadharCard(),
-                employeeDetailNw.getPanNo(),
-                employeeDetailNw.getPanCard(),
-                employeeDetailNw.getEducation(),
-                employeeDetailNw.getProfileImg(),
-                employeeDetailNw.getEmpStatus(),
-                employeeDetailNw.getBrandName(),
-                employeeDetailNw.getBrandId()
-        );
-
-        return apiInterface.updateEmployee(employeeDetail).map(new Function<MessageNw, com.razinggroups.domain.model.Message>() {
-            @Override
-            public com.razinggroups.domain.model.Message apply(MessageNw messageNw) throws Exception {
-                return new com.razinggroups.domain.model.Message(messageNw.getMessage());
             }
         });
     }

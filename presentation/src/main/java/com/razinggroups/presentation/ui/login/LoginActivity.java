@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.razinggroups.data.sharedpreference.SharedPrefManager;
 import com.razinggroups.domain.model.Credentials;
 import com.razinggroups.domain.model.Login;
 import com.razinggroups.presentation.MainApplication;
@@ -103,6 +104,8 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("userType", "MasterAdmin");
                 intent.putExtra("userName", login.getName());
+
+                SharedPrefManager.getInstans(getApplicationContext()).userLogin(login.getEmpId(),login.getName(),login.getType());
                 startActivity(intent);
                 finish();
             } else if (login.getType().equalsIgnoreCase("Employee")) {
@@ -111,12 +114,17 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
                 intent.putExtra("userName", login.getName());
 
                 intent.putExtra("useremail", login.getEmail());
+
+                SharedPrefManager.getInstans(getApplicationContext()).userLogin(login.getEmpId(),login.getName(),login.getType());
+
                 startActivity(intent);
                 finish();
             } else if (login.getType().equalsIgnoreCase("Admin")) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("userType", "Admin");
                 intent.putExtra("userName", login.getName());
+
+                SharedPrefManager.getInstans(getApplicationContext()).userLogin(login.getEmpId(),login.getName(),login.getType());
                 startActivity(intent);
                 finish();
             } else {

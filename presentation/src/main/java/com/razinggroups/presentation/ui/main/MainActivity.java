@@ -24,6 +24,7 @@ import com.razinggroups.presentation.MainApplication;
 import com.razinggroups.presentation.R;
 import com.razinggroups.presentation.base.BaseActivity;
 import com.razinggroups.presentation.ui.CustomerQuery.CustomerQueryFragment;
+import com.razinggroups.presentation.ui.CustomerQuery.CustomerSection.CustomerQueryMainFragment;
 import com.razinggroups.presentation.ui.brandCompany.BrandCompanyActivity;
 import com.razinggroups.presentation.ui.dashboard.DashBoardFragment;
 import com.razinggroups.presentation.ui.employee.EmployeeFragment;
@@ -217,8 +218,12 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
     {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        CustomerQueryFragment employeeFragment = new CustomerQueryFragment();
-        transaction.replace(R.id.activity_main_frame, employeeFragment);
+        CustomerQueryMainFragment customerQueryMainFragment = new CustomerQueryMainFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("key","0");
+        customerQueryMainFragment.setArguments(bundle);
+        transaction.replace(R.id.activity_main_frame, customerQueryMainFragment);
         transaction.commit();
         headerTitle.setText("Customer Query");
 

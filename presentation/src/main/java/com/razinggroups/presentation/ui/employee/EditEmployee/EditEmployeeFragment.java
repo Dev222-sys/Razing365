@@ -51,7 +51,7 @@ public class EditEmployeeFragment extends BaseFragment<EditEmployeeViewModel> im
     String empId = "";
 
     ProgressBar progressBar;
-    com.razinggroups.domain.model.employee.EmployeeDetail record = new com.razinggroups.domain.model.employee.EmployeeDetail();
+   EmployeeDetail record = new EmployeeDetail();
 
     EditText nameEt, designationEt, officelandlineEt, offcialEmailId, personalEmailId, mobile, location, officeAddress, residenceAddress, salary, emergencyContactName, EmergencyContactNo, dateOfBirth;
     EditText dateOfJoining, aadharNo, panNo;
@@ -190,8 +190,8 @@ public class EditEmployeeFragment extends BaseFragment<EditEmployeeViewModel> im
         return view;
     }
 
-    private com.razinggroups.domain.model.employee.EmployeeDetail createRequest() {
-        return new com.razinggroups.domain.model.employee.EmployeeDetail(
+    private EmployeeDetail createRequest() {
+        return new EmployeeDetail(
                 empId,
                 location.getText().toString(),
                 nameEt.getText().toString(),

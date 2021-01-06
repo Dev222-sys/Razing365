@@ -1,12 +1,16 @@
 package com.razinggroups.presentation.ui.CustomerQuery;
 
 import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,27 +21,41 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.razinggroups.data.network.RetrofitClient;
+import com.razinggroups.data.sharedpreference.SharedPrefManager;
 import com.razinggroups.domain.model.CustomerQuery.Customer;
 import com.razinggroups.domain.model.CustomerQuery.FetchAllCustomerQuerryResponse;
+import com.razinggroups.domain.model.employee.EmployeeDetail;
+import com.razinggroups.presentation.MainApplication;
 import com.razinggroups.presentation.R;
 import com.razinggroups.presentation.base.BaseFragment;
+import com.razinggroups.presentation.ui.employee.EditEmployee.EditEmployeeViewModel;
 import com.razinggroups.presentation.ui.myTask.createMyTask.ItemData;
 import com.razinggroups.presentation.ui.myTask.createMyTask.SpinnerAdapter;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
-public class CustomerQueryFragment extends BaseFragment<CustomerQueryViewModel> implements CustomerQueryNavigaor {
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class CustomerQueryFragment extends Fragment{
 
     /*@Inject
     @Named("LeaveFragmnet")*/
 
     ViewModelProvider.Factory viewModelFactory;
 
-    CustomerQueryViewModel customerQueryViewModel;
+    CustomerQueryViewModel viewModel;
 
     ProgressBar progressBar;
     TextView errorTv;
@@ -45,17 +63,27 @@ public class CustomerQueryFragment extends BaseFragment<CustomerQueryViewModel> 
     EditText et_name,et_company_email,et_mobile_no,et_landline_no,et_passport_no,et_nationality,et_enquiry,et_address;
     Spinner profession,reference,lead_type_spinner;
     Button Submit_Query;
+    Customer customer=new Customer();
+    TextView lead_type_tv;
 
 
+/*
 
+    @Override
+    public CustomerQueryViewModel getViewModel() {
+
+        return viewModel;
+    }
+*/
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         /*((MainApplication) getActivity().getApplicationContext()).getComponent().inject(this);
-        customerQueryViewModel = ViewModelProviders.of(this, viewModelFactory).get(LeaveViewModel.class);
-        leaveViewModel.setNavigator(this);*/
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CustomerQueryViewModel.class);
+        viewModel.setNavigator(this);*/
+
     }
 
     @Nullable
@@ -64,13 +92,55 @@ public class CustomerQueryFragment extends BaseFragment<CustomerQueryViewModel> 
         View view = inflater.inflate(R.layout.fragment_customer_query, container, false);
 
         initViews(view);
+
+        String username = SharedPrefManager.getInstans(getActivity()).getUsername();
+        Toast.makeText(getActivity(), username+SharedPrefManager.getInstans(getActivity()).getLogintype()+SharedPrefManager.getInstans(getActivity()).getUserMailId()+"", Toast.LENGTH_SHORT).show();
         Submit_Query.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String name=((ItemData) profession.getSelectedItem()).getName();
+              ///  String name=((ItemData) profession.getSelectedItem()).getName();
+                if (et_name.getText().toString().isEmpty())
+                {
+                    et_name.setError("Please Enter Name");
+                    et_name.requestFocus();
+                }else if (et_company_email.getText().toString().isEmpty())
+                {
+                    et_company_email.setError("Please Enter Company Email");
+                    et_company_email.requestFocus();
+                }
+                else if( et_mobile_no.getText().toString().isEmpty())
+                {
+                    et_mobile_no.setError("Please Enter Mobile Number");
+                    et_mobile_no.requestFocus();
+                }else  if (et_nationality.getText().toString().isEmpty())
+                {
+                    et_nationality.setError("Please Enter your Nationality");
+                    et_nationality.requestFocus();
+                }else if (lead_type_spinner.getSelectedItemPosition()==0)
+                {
 
-                Toast.makeText(getActivity(), name+"", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please Select Lead Type", Toast.LENGTH_SHORT).show();
+
+                }else if (reference.getSelectedItemPosition()==0)
+                {
+
+                    Toast.makeText(getActivity(), "Please Select Reference Through", Toast.LENGTH_SHORT).show();
+
+                }else if (profession.getSelectedItemPosition()==0)
+                {
+
+                    Toast.makeText(getActivity(), "Please Select Profession", Toast.LENGTH_SHORT).show();
+
+                }else {
+
+                    Toast.makeText(getActivity(),
+                    et_address.getText().toString()+
+                            ((ItemData) profession.getSelectedItem()).getName()+"", Toast.LENGTH_SHORT).show();
+
+                }
+
+
 
             }
         });
@@ -94,6 +164,8 @@ public class CustomerQueryFragment extends BaseFragment<CustomerQueryViewModel> 
         reference=view.findViewById(R.id.fragment_status_spinner);
         lead_type_spinner=view.findViewById(R.id.lead_type_spinner);
         Submit_Query=view.findViewById(R.id.fragment_customerquery_submit_btn);
+        lead_type_tv=view.findViewById(R.id.lead_type_tv);
+
 
 
         loadStatusSpinner();
@@ -128,34 +200,6 @@ public class CustomerQueryFragment extends BaseFragment<CustomerQueryViewModel> 
     }
 
 
-    @Override
-    public CustomerQueryViewModel getViewModel() {
-        return customerQueryViewModel;
-    }
-
-
-    @Override
-    public void onLoginSuccess(Customer customer) {
-
-
-    }
-
-    @Override
-    public void onError(String toString) {
-
-    }
-
-    @Override
-    public void onDataLoaded(FetchAllCustomerQuerryResponse fetchAllLeavesResponse) {
-
-    }
-
-    @Override
-    public void onUpdateResponse(String message) {
-
-    }
-
-
     private void referenceSpinner() {
 
         List<ItemData> statusData = new ArrayList<>();
@@ -178,6 +222,51 @@ public class CustomerQueryFragment extends BaseFragment<CustomerQueryViewModel> 
         //statusData.add(new ItemData("Ex Employee", "2"));
 
         profession.setAdapter(new SpinnerAdapter(getActivity(), R.id.txt, statusData));
+    }
+
+
+    public void SubmitQuery() {
+
+            Call<ResponseBody> call = RetrofitClient
+                    .getInstance()
+                    .getApi().submitquery("","");
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    String s = null;
+
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+
+                }
+            });
+
+        }
+
+
+
+
+    private Customer createRequest() {
+        return new Customer(
+                ((ItemData) lead_type_spinner.getSelectedItem()).getName(),
+                et_name.getText().toString(),
+                et_company_email.getText().toString()
+                ,et_mobile_no.getText().toString()
+                ,et_landline_no.getText().toString(),
+                et_passport_no.getText().toString(),
+                et_nationality.getText().toString(),
+                et_enquiry.getText().toString(),
+                ((ItemData) reference.getSelectedItem()).getName(),
+                et_address.getText().toString(),
+                ((ItemData) profession.getSelectedItem()).getName()
+
+        );
+
+
     }
 /*
     @Override

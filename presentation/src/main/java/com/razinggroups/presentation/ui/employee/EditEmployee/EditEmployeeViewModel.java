@@ -13,12 +13,14 @@ import io.reactivex.observers.DisposableSingleObserver;
 
 public class EditEmployeeViewModel extends BaseViewModel<EditEmployeeNavigator> {
 
-    com.razinggroups.domain.usecases.FetchSingleEmployee fetchSingleEmployee;
-    com.razinggroups.domain.usecases.UpdateEmployeeUseCase updateEmployeeUseCase;
-    com.razinggroups.domain.usecases.DeleteUseCase deleteUseCase;
-    com.razinggroups.domain.usecases.FetchAllBrandDetailsUseCase fetchAllBrandDetailsUseCase;
+   FetchSingleEmployee fetchSingleEmployee;
+   UpdateEmployeeUseCase updateEmployeeUseCase;
+   DeleteUseCase deleteUseCase;
+   FetchAllBrandDetailsUseCase fetchAllBrandDetailsUseCase;
 
-    public EditEmployeeViewModel(com.razinggroups.domain.usecases.FetchSingleEmployee fetchAllEmployeesUseCase, com.razinggroups.domain.usecases.UpdateEmployeeUseCase updateEmployeeUseCase, com.razinggroups.domain.usecases.DeleteUseCase deleteUseCase, com.razinggroups.domain.usecases.FetchAllBrandDetailsUseCase fetchAllBrandDetailsUseCase) {
+    public EditEmployeeViewModel(FetchSingleEmployee fetchAllEmployeesUseCase,UpdateEmployeeUseCase updateEmployeeUseCase, DeleteUseCase deleteUseCase, FetchAllBrandDetailsUseCase fetchAllBrandDetailsUseCase) {
+
+
         this.fetchSingleEmployee = fetchAllEmployeesUseCase;
         this.updateEmployeeUseCase = updateEmployeeUseCase;
         this.deleteUseCase = deleteUseCase;
@@ -43,13 +45,12 @@ public class EditEmployeeViewModel extends BaseViewModel<EditEmployeeNavigator> 
     }
 
     public void updateEmployee(EmployeeDetail employeeDetail) {
-        updateEmployeeUseCase.execute(new DisposableSingleObserver<com.razinggroups.domain.model.Message>() {
+        updateEmployeeUseCase.execute(new DisposableSingleObserver<Message>() {
             @Override
-            public void onSuccess(com.razinggroups.domain.model.Message message) {
+            public void onSuccess(Message message) {
                 if(getNavigator()!=null)
                     getNavigator().onUpdate(message.getMessage());
             }
-
             @Override
             public void onError(Throwable e) {
                 if(getNavigator()!=null)

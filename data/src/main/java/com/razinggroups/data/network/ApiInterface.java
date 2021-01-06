@@ -1,5 +1,6 @@
 package com.razinggroups.data.network;
 
+import com.razinggroups.data.models.CustomerQuerry.CustomerNw;
 import com.razinggroups.data.models.SingleIdRequestNw;
 import com.razinggroups.data.models.Employee.EmployeeDetailNw;
 import com.razinggroups.data.models.Employee.EmployeeListNw;
@@ -55,6 +56,9 @@ public interface ApiInterface {
     @POST("product/update.php")
     Single<MessageNw> updateEmployee(@Body EmployeeDetailNw employeeDetailNw);
 
+    @POST("product/update.php")
+    Single<MessageNw> custoer_query(@Body CustomerNw customerNw);
+
     @POST("product/employee_online.php")
     Single<EmployeeListNw> fetchOnlineEmployees();
 
@@ -62,6 +66,15 @@ public interface ApiInterface {
     //Login
     @GET("login/read.php")
     Single<LoginNw> login(@Query("uemail") String userName, @Query("pass") String passsword);
+
+
+    //Queryy
+    @FormUrlEncoded
+    @POST("otp_varification.php/")
+    Call<ResponseBody> submitquery(
+            @Field("name") String name,
+            @Field("phone") String phone);
+
 
 
     //logout

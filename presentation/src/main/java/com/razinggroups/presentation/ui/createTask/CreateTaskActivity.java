@@ -172,7 +172,7 @@ public class CreateTaskActivity extends BaseActivity<CreateTaskViewModel> implem
                 } else if (employeeSpinner.getSelectedItemPosition() == 0) {
                     Toast.makeText(getApplicationContext(), "Please Select Employee to Assign", Toast.LENGTH_SHORT).show();
                 } else {
-                    com.razinggroups.domain.model.employeeTask.CreateEmployeeTaskRequest createEmployeeTaskRequest = new CreateEmployeeTaskRequest(
+                    CreateEmployeeTaskRequest createEmployeeTaskRequest = new CreateEmployeeTaskRequest(
                             ((ItemData) employeeSpinner.getSelectedItem()).getId(),
                             "n/a",
                             taskDetail.getText().toString(),
