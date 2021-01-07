@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/leave_list_desc_tv"
             android:layout_marginBottom="8dp"
-            android:text="Contact Number - "
+            android:text="Contact No. - "
             android:textColor="@color/colorBlack" />
 
         <TextView
@@ -112,31 +112,25 @@
             android:layout_toEndOf="@+id/query_list_submitquery"
             android:text="Sample Date" />
 
-       <!-- <LinearLayout
+        <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/query_list_submitquery"
-            android:weightSum="2">
+          >
 
             <Button
+                android:visibility="gone"
                 android:id="@+id/leave_list_reject_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/colorRed"
-                android:text="Reject"
+                android:text="Delete"
                 android:textColor="@color/colorWhite" />
 
-            <Button
-                android:id="@+id/leave_list_approve_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@color/colorGreen"
-                android:text="Approve"
-                android:textColor="@color/colorWhite" />
-        </LinearLayout>-->
+
+        </LinearLayout>
 
     </RelativeLayout>
 </RelativeLayout>

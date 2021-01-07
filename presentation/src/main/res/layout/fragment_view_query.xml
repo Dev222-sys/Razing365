@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="16dp">
+
+    <ProgressBar
+        android:id="@+id/fragment_view_query_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/fragment_query_error_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:text="Error" />
+    <EditText
+
+        android:id="@+id/search_input"
+
+        android:drawableLeft="@drawable/ic_search_gray_24dp"
+        android:textColor="@color/content_text_color"
+        android:hint="search"
+        android:background="@drawable/search_input_style"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/search_input"
+
+        android:id="@+id/fragment_query_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

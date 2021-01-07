@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.razinggroup.presentation.com.razinggroups.presentation.ui.createTask.CreateTaskActivity">
+    tools:context="com.razinggroups.presentation.ui.createTask.CreateTaskActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -70,12 +70,28 @@ public interface ApiInterface {
 
     //Queryy
     @FormUrlEncoded
-    @POST("otp_varification.php/")
+    @POST("customer_query/create.php/")
     Call<ResponseBody> submitquery(
-            @Field("name") String name,
-            @Field("phone") String phone);
+            @Field("created_by") String created_by,
+            @Field("leadtype") String leadtype,
+            @Field("fullname") String fullname,
+            @Field("companymail") String companymail,
+            @Field("mobile") String mobile,
+            @Field("nationality") String nationality,
+            @Field("landline_phone") String landline_phone,
+            @Field("reference_through") String reference_through,
+            @Field("profession") String profession,
+            @Field("address") String address,
+            @Field("passport") String passport,
+            @Field("enquirymessage") String enquirymessage
+            );
 
 
+    @GET("customer_query/read.php/")
+    Call<ResponseBody> readQuery(
+
+
+    );
 
     //logout
     @FormUrlEncoded

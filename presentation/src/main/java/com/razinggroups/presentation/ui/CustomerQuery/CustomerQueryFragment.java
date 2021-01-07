@@ -2,11 +2,13 @@ package com.razinggroups.presentation.ui.CustomerQuery;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -90,53 +92,67 @@ public class CustomerQueryFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_customer_query, container, false);
-
         initViews(view);
 
+
+
         String username = SharedPrefManager.getInstans(getActivity()).getUsername();
-        Toast.makeText(getActivity(), username+SharedPrefManager.getInstans(getActivity()).getLogintype()+SharedPrefManager.getInstans(getActivity()).getUserMailId()+"", Toast.LENGTH_SHORT).show();
+
         Submit_Query.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
 
               ///  String name=((ItemData) profession.getSelectedItem()).getName();
                 if (et_name.getText().toString().isEmpty())
                 {
                     et_name.setError("Please Enter Name");
                     et_name.requestFocus();
+
+                    progressBar.setVisibility(View.INVISIBLE);
                 }else if (et_company_email.getText().toString().isEmpty())
                 {
                     et_company_email.setError("Please Enter Company Email");
                     et_company_email.requestFocus();
+
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
                 else if( et_mobile_no.getText().toString().isEmpty())
                 {
                     et_mobile_no.setError("Please Enter Mobile Number");
                     et_mobile_no.requestFocus();
+
+                    progressBar.setVisibility(View.INVISIBLE);
                 }else  if (et_nationality.getText().toString().isEmpty())
                 {
                     et_nationality.setError("Please Enter your Nationality");
                     et_nationality.requestFocus();
+
+                    progressBar.setVisibility(View.INVISIBLE);
                 }else if (lead_type_spinner.getSelectedItemPosition()==0)
                 {
 
                     Toast.makeText(getActivity(), "Please Select Lead Type", Toast.LENGTH_SHORT).show();
+
+                    progressBar.setVisibility(View.INVISIBLE);
 
                 }else if (reference.getSelectedItemPosition()==0)
                 {
 
                     Toast.makeText(getActivity(), "Please Select Reference Through", Toast.LENGTH_SHORT).show();
 
+                    progressBar.setVisibility(View.INVISIBLE);
+
                 }else if (profession.getSelectedItemPosition()==0)
                 {
 
                     Toast.makeText(getActivity(), "Please Select Profession", Toast.LENGTH_SHORT).show();
 
-                }else {
+                    progressBar.setVisibility(View.INVISIBLE);
 
-                    Toast.makeText(getActivity(),
-                    et_address.getText().toString()+
-                            ((ItemData) profession.getSelectedItem()).getName()+"", Toast.LENGTH_SHORT).show();
+                }else {
+                    SubmitQuery();
+
 
                 }
 
@@ -227,19 +243,61 @@ public class CustomerQueryFragment extends Fragment{
 
     public void SubmitQuery() {
 
+
             Call<ResponseBody> call = RetrofitClient
                     .getInstance()
-                    .getApi().submitquery("","");
+                    .getApi().submitquery(SharedPrefManager.getInstans(getActivity()).getUsername(),
+                            ((ItemData) lead_type_spinner.getSelectedItem()).getName(),
+                            et_name.getText().toString(),
+                            et_company_email.getText().toString()
+                            ,et_mobile_no.getText().toString(),
+                            et_nationality.getText().toString()
+                            ,et_landline_no.getText().toString(),
+                            ((ItemData) reference.getSelectedItem()).getName(),
+
+                            ((ItemData) profession.getSelectedItem()).getName(),
+                            et_address.getText().toString(),
+                            et_passport_no.getText().toString(),
+                            et_enquiry.getText().toString() );
+
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
                     String s = null;
+                    if (response.code()==200)
+                    {
+                        try {
+
+                            s = response.body().string();
+                            JSONObject jsonObject = new JSONObject(s);
+                            String msg = jsonObject.getString("message");
+
+//                            Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+                            onCreatealert(msg);
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
 
 
+
+
+                    }
+                    else
+                    {
+
+                        progressBar.setVisibility(View.INVISIBLE);
+
+
+
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                    progressBar.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getActivity(), "Server ", Toast.LENGTH_SHORT).show();
 
 
                 }
@@ -248,6 +306,20 @@ public class CustomerQueryFragment extends Fragment{
         }
 
 
+
+    public void onCreatealert(String message) {
+        progressBar.setVisibility(View.INVISIBLE);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage(message).setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //do things
+                dialog.dismiss();
+                getActivity().onBackPressed();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
 
     private Customer createRequest() {
