@@ -8,14 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.razinggroups.presentation.R;
+
 import com.razinggroups.presentation.ui.CustomerQuery.CustomerQueryFragment;
+import com.razinggroups.presentation.ui.CustomerQuery.QuerySubmit.Query_Submit;
 import com.razinggroups.presentation.ui.CustomerQuery.ViewQuery.ViewQueryFragment;
-import com.razinggroups.presentation.ui.employeeHomeScreen.EmployeeApplyLeave.EmployeeApplyLeaveFragment;
-import com.razinggroups.presentation.ui.employeeHomeScreen.employeeLeaveList.EmployeeLeaveListFragment;
-import com.razinggroups.presentation.ui.holiday.HolidayMainFragment;
+
+
+
 
 public class CustomerQueryMainFragment extends Fragment {
 
@@ -74,10 +75,11 @@ public class CustomerQueryMainFragment extends Fragment {
 
                     FragmentManager manager = getFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
-                    CustomerQueryFragment customerQueryFragment = new CustomerQueryFragment();
+
+                    Query_Submit customerQuerySubmit = new Query_Submit();
 
                     // activity_main_frame
-                    transaction.replace(R.id.activity_employee_home_frame_layout, customerQueryFragment);
+                    transaction.replace(R.id.activity_employee_home_frame_layout, customerQuerySubmit);
                     transaction.addToBackStack(null);
                     transaction.commit();
 
@@ -86,9 +88,11 @@ public class CustomerQueryMainFragment extends Fragment {
 
                     FragmentManager manager = getFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
-                    CustomerQueryFragment customerQueryFragment = new CustomerQueryFragment();
+                    Query_Submit customerQuerySubmit = new Query_Submit();
+
+
                     // activity_main_frame
-                    transaction.replace(R.id.activity_main_frame, customerQueryFragment);
+                    transaction.replace(R.id.activity_main_frame, customerQuerySubmit);
                     transaction.addToBackStack(null);
                     transaction.commit();
 

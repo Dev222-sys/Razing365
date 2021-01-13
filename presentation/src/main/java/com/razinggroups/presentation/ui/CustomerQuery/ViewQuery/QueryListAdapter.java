@@ -143,6 +143,13 @@ class QueryListAdapter extends RecyclerView.Adapter<QueryListAdapter.MyViewHolde
             button=itemView.findViewById(R.id.leave_list_reject_btn);
             button.setOnClickListener(this);
 
+            /*layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });*/
+
 
 
         }
@@ -150,7 +157,9 @@ class QueryListAdapter extends RecyclerView.Adapter<QueryListAdapter.MyViewHolde
         @Override
         public void onClick(View v) {
 
+
            itemClickListener.onClick(v,getAdapterPosition(),false);
+
         }
     }
 

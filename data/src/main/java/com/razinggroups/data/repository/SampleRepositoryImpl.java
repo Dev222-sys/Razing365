@@ -183,6 +183,7 @@ public class SampleRepositoryImpl implements SampleRepository {
     public Single<Message> customer(Customer customer) {
         CustomerNw customerNw = new CustomerNw(
 
+
                 customer.getLead_type(),
                 customer.getName(),
                 customer.getCompany_email(),

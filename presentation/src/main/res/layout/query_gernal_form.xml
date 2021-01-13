@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@color/colorMidGrey"
+                android:gravity="center_vertical|start"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="@string/general_information"
+
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    app:textAllCaps="true"/>
+
+
+
+            </LinearLayout>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/fragment_employee_detail_nametv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+
+                android:layout_marginRight="20dp"
+                android:text="Name" />
+
+            <EditText
+                android:id="@+id/fragment_customer_query_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Full Name as Passport"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:id="@+id/fragment_employee_detail_officialemailidtv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Mobile No." />
+
+            <EditText
+                android:id="@+id/fragment_customer_query_mobileetno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:inputType="phone"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Mobile Number"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/customer_nationality_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Nationality" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+
+                android:background="@drawable/round_grey_corners"
+                android:padding="10dp" >
+
+
+            </LinearLayout>
+
+
+
+            <EditText
+                android:id="@+id/customer_nationality_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Nationality"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/customer_landline_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Landline Number" />
+
+            <EditText
+                android:id="@+id/customer_laindline_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Landline Number"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:id="@+id/customer_passport_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Passport Number" />
+
+            <EditText
+                android:id="@+id/customer_passport_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Passport Number"
+                android:padding="10dp" />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Email Address" />
+
+            <EditText
+                android:id="@+id/customer_emailadress_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:inputType="textWebEmailAddress"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Email Address"
+                android:padding="10dp" />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Permanent Address" />
+
+            <EditText
+                android:id="@+id/customer_permanentadress_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Permanent Address"
+                android:padding="10dp" />
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text=" Address of Resiency" />
+
+            <EditText
+                android:id="@+id/customer_resiencyadress_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="10dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Resiency Address" />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/submitgernalform"
+                app:backgroundTint="@color/colorRed"
+                style="@style/RegistrationFAB"
+                android:layout_width="wrap_content"
+                app:fabSize="normal"
+
+
+                app:rippleColor="@color/colorRed"
+                app:srcCompat="@drawable/ic_arrow" />
+            <!--    <Button
+
+                    android:layout_gravity="center"
+                    android:id="@+id/gernal_submit_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fragment_employee_apply_leave_desc"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginVertical="10dp"
+
+                    android:background="@color/colorGreen"
+                    android:gravity="center"
+                    android:text="Submit"
+                    android:textColor="@color/colorWhite" />-->
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</FrameLayout>

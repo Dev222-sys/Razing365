@@ -1,6 +1,8 @@
 <resources>
+
     <string name="app_name">Raizing 365</string>
     <string name="title_activity_login">Sign in</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -21,6 +23,107 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!--
+    Query From Details
+                    -->
+
+    <string-array name="yes_no">
+        <item>Please Select</item>
+        <item>Yes</item>
+        <item>No</item>
+
+    </string-array>
+
+    <string-array name="PassportCopy">
+        <item>Please Select</item>
+        <item>Received</item>
+        <item>Not Received</item>
+
+    </string-array>
+
+
+    <string-array name="business_salaried">
+        <item>Please Select</item>
+        <item>Business Owner</item>
+        <item>Salaried Employee</item>
+
+    </string-array>
+
+    <string-array name="residency_passport">
+        <item>Please Select</item>
+        <item>Residency </item>
+        <item>Second Passport</item>
+
+    </string-array>
+    <string-array name="social_media">
+        <item>Please Select</item>
+        <item>Facebook</item>
+        <item>Instagram</item>
+        <item>LinkedIn</item>
+        <item>Snapchat</item>
+
+        <item>	YouTube</item>
+        <item>	WhatsApp</item>
+        <item>Instagram</item>
+    </string-array>
+
+
+    <string-array name="conacted_spinner">
+        <item>Please Select</item>
+        <item>	Email</item>
+        <item>	SMS</item>
+        <item>	Call</item>
+        <item>	Video Call</item>
+        <item>	WhatsApp</item>
+
+    </string-array>
+
+    <string name="full_name"> Full Name as per Passport </string>
+
+
+    <string name="applyingforfamily">Would you be applying for family as well? </string>
+
+    <string name="details_below">kindly provide the details below : </string>
+
+    <string name="general_information">Submit Your General information </string>
+
+    <string name="as_a_single">Would you be applying as a single applicant? </string>
+
+    <string name="mentioned_name">Is the name of the main applicant same as the above-mentioned name? </string>
+    <string name="emp_type">Are you a business owner or a salaried employee?</string>
+
+    <string name="work_name">Name of the business or organization you work for?</string>
+
+    <string name="uk_visa">Have you ever been refused a UK Visa? </string>
+
+    <string name="european_visa">Have you ever been refused a European Visa? </string>
+
+    <string name="usa_visa">Have you ever been refused a USA Visa?  </string>
+
+    <string name="interested_type">Are you interested in residency or in a second passport?  </string>
+
+    <string name="migrate">
+        Do You plan to migrate to another country? or Do you wish to hold a second nationality for ease of travel and business?
+</string>
+
+
+    <string name="investment_budget">
+        What is your investment Budget?
+</string>
+
+
+    <string name="hear_about">
+         How did you hear about us?
+</string>
+    <string name="contacted">
+     How would you like to be contacted?
+</string>
+    <string name="subscribe">
+
+    Would you like to subscribe for our emails and any relevant information? or any updates?
+</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

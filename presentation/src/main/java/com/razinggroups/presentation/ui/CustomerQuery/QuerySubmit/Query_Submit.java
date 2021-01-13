@@ -1,18 +1,14 @@
-package com.razinggroups.presentation.ui.CustomerQuery;
+package com.razinggroups.presentation.ui.CustomerQuery.QuerySubmit;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,37 +23,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import com.razinggroups.data.network.RetrofitClient;
 import com.razinggroups.data.sharedpreference.SharedPrefManager;
 import com.razinggroups.domain.model.CustomerQuery.Customer;
-import com.razinggroups.domain.model.CustomerQuery.FetchAllCustomerQuerryResponse;
-import com.razinggroups.domain.model.employee.EmployeeDetail;
-import com.razinggroups.presentation.MainApplication;
 import com.razinggroups.presentation.R;
-import com.razinggroups.presentation.base.BaseFragment;
-import com.razinggroups.presentation.ui.employee.EditEmployee.EditEmployeeViewModel;
-import com.razinggroups.presentation.ui.myTask.createMyTask.ItemData;
-import com.razinggroups.presentation.ui.myTask.createMyTask.SpinnerAdapter;
+import com.razinggroups.presentation.ui.CustomerQuery.CustomerQueryViewModel;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+public class Query_Submit extends Fragment  implements AdapterView.OnItemSelectedListener {
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class CustomerQueryFragment extends Fragment implements AdapterView.OnItemSelectedListener {
-
-    /*@Inject
-    @Named("LeaveFragmnet")*/
 
     private ViewFlipper viewFlipper;
 
@@ -69,48 +41,52 @@ public class CustomerQueryFragment extends Fragment implements AdapterView.OnIte
     TextView errorTv;
     RecyclerView recyclerView;
 
-    Spinner  as_single_spinner, as_mentioned_spinner, customer_employe_type_sp, fragment_uk_visa_spinner,
+    Spinner applyingforfamily,as_single_spinner, as_mentioned_spinner, customer_employe_type_sp, fragment_uk_visa_spinner,
             fragment_european_visa_spinner,
             fragment_usa_visa_spinner,
             fragment_intersted_type_spinner,
             fragment_Social_media_spinner,
             conacted_spinner,
-            subscibe_spinner;
+            subscibe_spinner,
+            passportcopy;
     EditText full_name, mobile_no, nationality, landline_no, passport_no, email, p_address, r_address;
+
+    String full_namee, mobile_noo, nationalityy, landline_noo, passport_noo, emaill, p_addresss, r_addresss;
 
     Button gernal_submit_btn;
     Customer customer = new Customer();
     TextView lead_type_tv;
     LinearLayout applicant_or_not, uk_visa_spinner_ly, european_visa_ly, usa_visa_ly;
+
     EditText customer_work_org_name_et, customer_uk_year_et, customer_Reason_for_refusal_et,
             customer_migrate_et;
+    FloatingActionButton submitgernalform,
+            submitSingleapplicantform,
+            queryempolyetype,
+            query_visa,
+            socialmedia,
+            applyforfamily_btn;
+
+    EditText family_name,family_passport,family_age,family_passport_copy;
+    String family_namee,family_passportt,family_agee,family_passport_copyy;
 
 
 
-
-/*
-
-    @Override
-    public CustomerQueryViewModel getViewModel() {
-
-        return viewModel;
+    public Query_Submit() {
+        // Required empty public constructor
     }
-*/
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /*((MainApplication) getActivity().getApplicationContext()).getComponent().inject(this);
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CustomerQueryViewModel.class);
-        viewModel.setNavigator(this);*/
-
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_customer_query, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+        View view = inflater.inflate(R.layout.activity_customer_query_submit, container, false);
         initViews(view);
 
 
@@ -120,11 +96,25 @@ public class CustomerQueryFragment extends Fragment implements AdapterView.OnIte
         return view;
     }
 
+
     private void initViews(View view) {
-        progressBar = view.findViewById(R.id.CustomerQueryFragment_progress_bar);
+       // progressBar = view.findViewById(R.id.CustomerQueryFragment_progress_bar);
+
+        viewFlipper = view.findViewById(R.id.viewflipper_registration);
+        viewFlipper.setDisplayedChild(0);
+
+        submitgernalform=view.findViewById(R.id.submitgernalform);
+        submitSingleapplicantform=view.findViewById(R.id.submitSingleapplicantform);
+        applyforfamily_btn=view.findViewById(R.id.applyforfamily_btn);
+
+        queryempolyetype=view.findViewById(R.id.queryempolyetype);
+        query_visa=view.findViewById(R.id.query_visa);
+        socialmedia=view.findViewById(R.id.socialmedia);
 
 
-        as_single_spinner = view.findViewById(R.id.fragment_as_single_spinner);
+        applyingforfamily=view.findViewById(R.id.applyingforfamily);
+
+       as_single_spinner = view.findViewById(R.id.fragment_as_single_spinner);
         applicant_or_not = view.findViewById(R.id.applicant_or_not);
         as_mentioned_spinner = view.findViewById(R.id.as_mentioned_spinner);
         customer_employe_type_sp = view.findViewById(R.id.customer_employe_type_sp);
@@ -143,6 +133,7 @@ public class CustomerQueryFragment extends Fragment implements AdapterView.OnIte
         fragment_Social_media_spinner = view.findViewById(R.id.fragment_Social_media_spinner);
         conacted_spinner = view.findViewById(R.id.conacted_spinner);
         subscibe_spinner=view.findViewById(R.id.subscibe_spinner);
+        passportcopy=view.findViewById(R.id.passportcopy);
 
 
 
@@ -154,11 +145,23 @@ public class CustomerQueryFragment extends Fragment implements AdapterView.OnIte
         email = (EditText) view.findViewById(R.id.customer_emailadress_et);
         p_address = (EditText) view.findViewById(R.id.customer_permanentadress_et);
         r_address = (EditText) view.findViewById(R.id.customer_resiencyadress_et);
-        gernal_submit_btn=view.findViewById(R.id.gernal_submit_btn);
+
+
+
+
+        family_name=view.findViewById(R.id.familycustomer_query_name_et);
+        family_passport=view.findViewById(R.id.familycustomer_passport_et);
+        family_age=view.findViewById(R.id.familycustomer_age_et);
+
 
 
 
         spinnerdata();
+
+
+
+
+       // spinnerdata();
 /*
         if (gernal_information_spinner.getSelectedItemPosition()==1)
         {
@@ -169,11 +172,217 @@ public class CustomerQueryFragment extends Fragment implements AdapterView.OnIte
 
         }*/
         //statusData.add(new ItemData("Ex Employee", "2"));
+        submitgernalform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               gernalformdata();
+
+        // viewFlipper.setDisplayedChild(1);
+
+            }
+        });
+
+        submitSingleapplicantform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewFlipper.setDisplayedChild(2);
+
+                //Toast.makeText(getActivity(), "hey", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queryempolyetype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewFlipper.setDisplayedChild(3);
+
+                //Toast.makeText(getActivity(), "hey", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        query_visa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                     viewFlipper.setDisplayedChild(4);
+
+//                Toast.makeText(getActivity(), "hey", Toast.LENGTH_SHORT).show();
+            }
+        });
+        socialmedia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onCreatealert("Query Was Generated successfully");
+            }
+        });
+
+
+        applyforfamily_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            family_details();
+            }
+        });
+
+
+    }
+
+
+    private void family_details() {
+        family_namee=family_name.getText().toString();
+        family_passportt=family_passport.getText().toString();
+        family_agee=family_age.getText().toString();
+        if (family_namee.isEmpty())
+        {
+            family_name.setError("please Enter Name");
+        }else if(family_passportt.isEmpty())
+        {
+            family_passport.setError("Please Enter Passport");
+
+        }else if (family_agee.isEmpty())
+        {
+            family_age.setError("Please Enter Age");
+        }else {
+            Toast.makeText(getActivity(), "Submit", Toast.LENGTH_SHORT).show();
+            alertfamilySubmit();
+        }
+
+
+
+
+
+
+
+    }
+
+    public  void gernalformdata()
+    {
+
+        full_namee=full_name.getText().toString();
+        mobile_noo=mobile_no.getText().toString();
+        nationalityy=nationality.getText().toString();
+        landline_noo=landline_no.getText().toString();
+        passport_noo=passport_no.getText().toString();
+        emaill=email.getText().toString();
+
+        p_addresss=p_address.getText().toString();
+        r_addresss=r_address.getText().toString();
+
+
+
+        if (full_namee.isEmpty())
+        {
+            full_name.setError("Please Enter Name");
+            full_name.findFocus();
+        }
+        else if(mobile_noo.isEmpty())
+        {
+            mobile_no.setError("Please enter mobile no");
+            mobile_no.findFocus();
+        }
+
+        else if(nationalityy.isEmpty())
+        {
+            nationality.setError("Please enter Nationality");
+            nationality.findFocus();
+        }
+        else if(landline_noo.isEmpty())
+        {
+            landline_no.setError("Please enter Landline no");
+            landline_no.findFocus();
+        }
+        else if(passport_noo.isEmpty())
+        {
+            passport_no.setError("Please enter Passport no");
+            passport_no.findFocus();
+        }
+        else if(emaill.isEmpty())
+        {
+            email.setError("Please enter Email Address");
+            email.findFocus();
+        }
+
+        else if(p_addresss.isEmpty())
+        {
+            p_address.setError("Please enter permanent  Addres");
+            p_address.findFocus();
+        }
+        else if(r_addresss.isEmpty())
+        {
+            r_address.setError("Please enter Resiency Address");
+            r_address.findFocus();
+        }
+        else {
+
+            viewFlipper.setDisplayedChild(1);
+
+            Toast.makeText(getActivity(), "Submit", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    public void alertfamilySubmit()
+    {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Family Details Was Submitted")
+                .setMessage("Are you  Want To Add  More Family Details?")
+                .setCancelable(false)
+                .setPositiveButton("Add More", new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        //Toast.makeText(getActivity(), "Add more", Toast.LENGTH_SHORT).show();
+                       // dialog.cancel();
+                        viewFlipper.setDisplayedChild(5);
+
+                        family_name.getText().clear();
+                        family_age.getText().clear();
+                        family_passport.getText().clear();
+
+
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        viewFlipper.setDisplayedChild(1);
+
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+    public void onCreatealert(String message) {
+
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(getContext());
+        builder.setMessage(message).setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //do things
+                dialog.dismiss();
+                getActivity().onBackPressed();
+            }
+        });
+        android.support.v7.app.AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
     public void spinnerdata() {
-
+        applyingforfamily();
+        passportcopy();
         single_or_more();
         Applicant_same();
         bussines_salaeried();
@@ -187,23 +396,28 @@ public class CustomerQueryFragment extends Fragment implements AdapterView.OnIte
     }
 
 
-
-
-    private void single_or_more() {
+    private void applyingforfamily() {
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_dropdown_item_1line, getResources().getStringArray(R.array.yes_no));
 
-        as_single_spinner.setAdapter(adapter);
-        as_single_spinner.setOnItemSelectedListener(this);
-        as_single_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        applyingforfamily.setAdapter(adapter);
+        applyingforfamily.setOnItemSelectedListener(this);
+        applyingforfamily.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if (position == 1) {
-                    applicant_or_not.setVisibility(View.VISIBLE);
+
+                    String text = as_single_spinner.getSelectedItem().toString();
+                    Toast.makeText(getActivity(), text+"", Toast.LENGTH_SHORT).show();
+
+                    viewFlipper.setDisplayedChild(5);
+
                 } else {
-                    applicant_or_not.setVisibility(View.GONE);
+
+                    String text = as_single_spinner.getSelectedItem().toString();
+                    Toast.makeText(getActivity(), text+"", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -217,6 +431,74 @@ public class CustomerQueryFragment extends Fragment implements AdapterView.OnIte
 
     }
 
+
+
+    private void passportcopy() {
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_dropdown_item_1line, getResources().getStringArray(R.array.PassportCopy));
+
+        passportcopy.setAdapter(adapter);
+        passportcopy.setOnItemSelectedListener(this);
+        passportcopy.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if (position == 1) {
+
+                    String text = passportcopy.getSelectedItem().toString();
+                    Toast.makeText(getActivity(), text+"", Toast.LENGTH_SHORT).show();
+
+
+                } else {
+
+                    String text = as_single_spinner.getSelectedItem().toString();
+                    Toast.makeText(getActivity(), text+"", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+
+            public void onNothingSelected(AdapterView<?> parentView) {
+                //  selectedyear = 0;
+                //return;
+            }
+        });
+
+    }
+    private void single_or_more() {
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_dropdown_item_1line, getResources().getStringArray(R.array.yes_no));
+
+        as_single_spinner.setAdapter(adapter);
+        as_single_spinner.setOnItemSelectedListener(this);
+        as_single_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if (position == 1) {
+
+                    String text = as_single_spinner.getSelectedItem().toString();
+                    Toast.makeText(getActivity(), text+"", Toast.LENGTH_SHORT).show();
+
+                    applicant_or_not.setVisibility(View.VISIBLE);
+                } else {
+                    applicant_or_not.setVisibility(View.GONE);
+                    String text = as_single_spinner.getSelectedItem().toString();
+                    Toast.makeText(getActivity(), text+"", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+
+            public void onNothingSelected(AdapterView<?> parentView) {
+                //  selectedyear = 0;
+                //return;
+            }
+        });
+
+    }
     private void Applicant_same()
     {
 
@@ -230,7 +512,6 @@ public class CustomerQueryFragment extends Fragment implements AdapterView.OnIte
 
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if (position == 1) {
-                    Toast.makeText(getActivity(), "yes", Toast.LENGTH_SHORT).show();
                 } else {
 
                 }
@@ -490,178 +771,4 @@ public class CustomerQueryFragment extends Fragment implements AdapterView.OnIte
         });
 
     }
-
-
-    private void referenceSpinner() {
-
-        List<ItemData> statusData = new ArrayList<>();
-        statusData.add(new ItemData("Select Reference ", "0"));
-        statusData.add(new ItemData("Friends", "1"));
-        statusData.add(new ItemData("Social Media", "2"));
-        statusData.add(new ItemData("Channel  Partner", "3"));
-
-
-        //statusData.add(new ItemData("Ex Employee", "2"));
-
-        //  reference.setAdapter(new SpinnerAdapter(getActivity(), R.id.txt, statusData));
-    }
-
-    private void loadStatusSpinner() {
-        List<ItemData> statusData = new ArrayList<>();
-        statusData.add(new ItemData("Select Profession", "0"));
-        statusData.add(new ItemData("Bussniess", "1"));
-
-        //statusData.add(new ItemData("Ex Employee", "2"));
-
-        // profession.setAdapter(new SpinnerAdapter(getActivity(), R.id.txt, statusData));
-    }
-
-
-   /* public void SubmitQuery() {
-
-
-            Call<ResponseBody> call = RetrofitClient
-                    .getInstance()
-                    .getApi().submitquery(SharedPrefManager.getInstans(getActivity()).getUsername(),
-                            ((ItemData) lead_type_spinner.getSelectedItem()).getName(),
-                            et_name.getText().toString(),
-                            et_company_email.getText().toString()
-                            ,et_mobile_no.getText().toString(),
-                            et_nationality.getText().toString()
-                            ,et_landline_no.getText().toString(),
-                            ((ItemData) reference.getSelectedItem()).getName(),
-
-                            ((ItemData) profession.getSelectedItem()).getName(),
-                            et_address.getText().toString(),
-                            et_passport_no.getText().toString(),
-                            et_enquiry.getText().toString() );
-
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
-                    String s = null;
-                    if (response.code()==200)
-                    {
-                        try {
-
-                            s = response.body().string();
-                            JSONObject jsonObject = new JSONObject(s);
-                            String msg = jsonObject.getString("message");
-
-//                            Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-                            onCreatealert(msg);
-                        } catch (IOException | JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-
-
-                    }
-                    else
-                    {
-
-                        progressBar.setVisibility(View.INVISIBLE);
-
-
-
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-                    progressBar.setVisibility(View.INVISIBLE);
-                    Toast.makeText(getActivity(), "Server ", Toast.LENGTH_SHORT).show();
-
-
-                }
-            });
-
-        }*/
-
-
-    public void onCreatealert(String message) {
-        progressBar.setVisibility(View.INVISIBLE);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage(message).setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                //do things
-                dialog.dismiss();
-                getActivity().onBackPressed();
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
-    public void Gernal_Information() {
-
-
-
-
-
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-
-
-/*
-    @Override
-    public void onError(String toString) {
-        progressBar.setVisibility(View.GONE);
-        errorTv.setVisibility(View.VISIBLE);
-        errorTv.setText(toString);
-    }*/
-/*
-
-    @Override
-    public void onDataLoaded(FetchAllLeavesResponse fetchAllLeavesResponse) {
-        progressBar.setVisibility(View.GONE);
-        if (fetchAllLeavesResponse.getCount().equalsIgnoreCase("0")) {
-            errorTv.setVisibility(View.VISIBLE);
-            errorTv.setText("No Data To Display");
-        } else {
-            recyclerView.setVisibility(View.VISIBLE);
-            recyclerView.setAdapter(new LeaveListAdapter(fetchAllLeavesResponse.getRecords(), this));
-        }
-
-    }
-
-    @Override
-    public void onUpdateResponse(String message) {
-        progressBar.setVisibility(View.INVISIBLE);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage(message).setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                //do things
-                dialog.dismiss();
-                progressBar.setVisibility(View.VISIBLE);
-                recyclerView.setVisibility(View.INVISIBLE);
-                leaveViewModel.fetchData();
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
-*/
-
-/*    @Override
-    public void onBtnClick(String taskId, String status) {
-        leaveViewModel.updateLeave(new UpdateLeave(taskId, status));
-        progressBar.setVisibility(View.VISIBLE);
-    }*/
 }

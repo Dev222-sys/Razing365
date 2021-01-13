@@ -12,55 +12,49 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <application
-        android:name="com.razinggroups.presentation.MainApplication"
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
         <activity
-            android:name="com.razinggroups.presentation.ui.vendor.manipulateVendor.ManipulateVendorActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name="com.razinggroups.presentation.ui.vendor.createVendorTask.CreateVendorTaskActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity
-            android:name="com.razinggroups.presentation.ui.main.CreateTaskHomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-
-        <activity
-            android:name="com.razinggroups.presentation.ui.vendor.VendorActivity"
+            android:name=".ui.vendor.manipulateVendor.ManipulateVendorActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.razinggroups.presentation.ui.brandCompany.BrandCompanyActivity"
+            android:name=".ui.vendor.createVendorTask.CreateVendorTaskActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.razinggroups.presentation.ui.brandCompany.BrandManipulateScreen.BrandManipulateActivity"
+            android:name=".ui.main.CreateTaskHomeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.razinggroups.presentation.ui.brandCompany.CompanyManipulateScreen.CompanyManipulateActivity"
+            android:name=".ui.vendor.VendorActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.razinggroups.presentation.ui.createTask.CreateTaskActivity"
+            android:name=".ui.brandCompany.BrandCompanyActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.razinggroups.presentation.ui.employeeHomeScreen.EmployeeHomeActivity"
+            android:name=".ui.brandCompany.BrandManipulateScreen.BrandManipulateActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.razinggroups.presentation.ui.main.MainActivity"
+            android:name=".ui.brandCompany.CompanyManipulateScreen.CompanyManipulateActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.createTask.CreateTaskActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.employeeHomeScreen.EmployeeHomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.main.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.razinggroups.presentation.ui.login.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
-
         <activity
-            android:name="com.razinggroups.presentation.ui.SplashActivity"
+            android:name=".ui.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,7 +62,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

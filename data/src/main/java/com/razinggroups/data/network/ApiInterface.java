@@ -86,12 +86,19 @@ public interface ApiInterface {
             @Field("enquirymessage") String enquirymessage
             );
 
-
+//get Query data
     @GET("customer_query/read.php/")
     Call<ResponseBody> readQuery(
+    );
 
+    //delete Query
+    @FormUrlEncoded
+    @POST("customer_query/delete.php/")
+    Call<ResponseBody> deleteQuery(
+            @Field("id") String id
 
     );
+
 
     //logout
     @FormUrlEncoded

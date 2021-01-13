@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@color/colorMidGrey"
+                android:gravity="center_vertical|start"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="@string/general_information"
+
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    app:textAllCaps="true"/>
+
+
+
+            </LinearLayout>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/uk_visa" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edittextupdatedesign"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <Spinner
+                    android:id="@+id/fragment_uk_visa_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/yes_no"
+
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+
+                    <requestFocus />
+                </Spinner>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/uk_visa_spinner_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="In which year ?" />
+
+                <EditText
+                    android:id="@+id/customer_uk_year_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter year"
+                    android:padding="10dp" />
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Reason for refusal ?" />
+
+                <EditText
+                    android:id="@+id/customer_Reason_for_refusal_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter Reason for refusal"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/colorMidGrey" />
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/european_visa" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edittextupdatedesign"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <Spinner
+                    android:id="@+id/fragment_european_visa_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/yes_no"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+
+                    <requestFocus />
+                </Spinner>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/european_visa_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="In which year ?" />
+
+                <EditText
+                    android:id="@+id/customer_european_year_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter year"
+                    android:padding="10dp" />
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Reason for refusal ?" />
+
+                <EditText
+                    android:id="@+id/customer_european_for_refusal_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter Reason for refusal"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/colorMidGrey" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/usa_visa" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edittextupdatedesign"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <Spinner
+                    android:id="@+id/fragment_usa_visa_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/yes_no"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+
+                    <requestFocus />
+                </Spinner>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/usa_visa_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="In which year ?" />
+
+                <EditText
+                    android:id="@+id/customer_usa_year_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter year"
+                    android:padding="10dp" />
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Reason for refusal ?" />
+
+                <EditText
+                    android:id="@+id/customer_usa_for_refusal_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter Reason for refusal"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/colorMidGrey" />
+
+
+            </LinearLayout>
+
+
+
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/query_visa"
+                app:backgroundTint="@color/colorRed"
+                style="@style/RegistrationFAB"
+                android:layout_width="wrap_content"
+                app:fabSize="normal"
+
+
+                app:rippleColor="@color/colorRed"
+                app:srcCompat="@drawable/ic_arrow" />
+            <!--    <Button
+
+                    android:layout_gravity="center"
+                    android:id="@+id/gernal_submit_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fragment_employee_apply_leave_desc"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginVertical="10dp"
+
+                    android:background="@color/colorGreen"
+                    android:gravity="center"
+                    android:text="Submit"
+                    android:textColor="@color/colorWhite" />-->
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</FrameLayout>

@@ -10,6 +10,8 @@
     <color name="colorMidGrey">#60000000</color>
     <color name="colorDarkGrey">#393737</color>
     <color name="colorYellow">#FCCC47</color>
+    <color name="yellow">#fabb00</color>
+
     <color name="colorGreen">	#008000</color>
 
     <color name="content_text_color">#999da4</color>

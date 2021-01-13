@@ -1,6 +1,8 @@
 package com.razinggroups.domain.model.CustomerQuery;
 
 public class Customer {
+    public String id;
+
     public String lead_type;
     public String name;
     public String company_email;
@@ -13,11 +15,8 @@ public class Customer {
     public String address;
     public String profession;
 
-    public Customer() {
-
-    }
-
-    public Customer(String lead_type, String name, String company_email, String mobile, String landline, String passport_no, String nationality, String enquiry_details, String reference, String address, String profession) {
+    public Customer(String id, String lead_type, String name, String company_email, String mobile, String landline, String passport_no, String nationality, String enquiry_details, String reference, String address, String profession) {
+        this.id = id;
         this.lead_type = lead_type;
         this.name = name;
         this.company_email = company_email;
@@ -29,6 +28,19 @@ public class Customer {
         this.reference = reference;
         this.address = address;
         this.profession = profession;
+    }
+
+
+    public Customer() {
+
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getLead_type() {
