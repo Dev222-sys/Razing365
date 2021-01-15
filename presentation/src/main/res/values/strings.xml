@@ -27,6 +27,20 @@
     Query From Details
                     -->
 
+
+    <string-array name="realtionship_item">
+    <item>Please Select</item>
+
+    <item>Father</item>
+    <item>Mother</item>
+        <item>Son</item>
+        <item>Daughter</item>
+        <item>Husband</item>
+        <item>Wife</item>
+        <item>Brother</item>
+        <item>Sister</item>
+    </string-array>
+
     <string-array name="yes_no">
         <item>Please Select</item>
         <item>Yes</item>
@@ -55,6 +69,20 @@
         <item>Second Passport</item>
 
     </string-array>
+
+
+
+    <string-array name="hear_about">
+        <item>Please Select</item>
+
+        <item>Social Media</item>
+        <item>Print Advertisement </item>
+        <item>Channel Partners</item>
+        <item>Friends or Colleagues</item>
+
+    </string-array>
+
+
     <string-array name="social_media">
         <item>Please Select</item>
         <item>Facebook</item>
@@ -80,12 +108,16 @@
 
     <string name="full_name"> Full Name as per Passport </string>
 
+    <string name="realtionship">Please select Relationship of family member</string>
+
 
     <string name="applyingforfamily">Would you be applying for family as well? </string>
 
     <string name="details_below">kindly provide the details below : </string>
 
     <string name="general_information">Submit Your General information </string>
+
+    <string name="query">Query </string>
 
     <string name="as_a_single">Would you be applying as a single applicant? </string>
 
@@ -113,7 +145,8 @@
 
 
     <string name="hear_about">
-         How did you hear about us?
+        Where did you hear about us?
+
 </string>
     <string name="contacted">
      How would you like to be contacted?

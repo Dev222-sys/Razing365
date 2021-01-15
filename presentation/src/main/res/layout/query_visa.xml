@@ -18,21 +18,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@color/colorMidGrey"
+                android:background="@color/yellow"
                 android:gravity="center_vertical|start"
                 android:orientation="vertical"
                 android:padding="20dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="@string/general_information"
+                    android:textSize="29sp"
+                    android:text="@string/query"
 
                     android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     app:textAllCaps="true"/>
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/general_information"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    />
+
 
 
 
@@ -75,12 +84,12 @@
 
 
             <LinearLayout
+
+                android:visibility="gone"
                 android:id="@+id/uk_visa_spinner_ly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
+                android:orientation="vertical">
                 <TextView
 
                     android:layout_width="match_parent"
@@ -112,9 +121,10 @@
                 <EditText
                     android:id="@+id/customer_Reason_for_refusal_et"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:layout_marginVertical="10dp"
                     android:layout_marginLeft="20dp"
+                    android:gravity="center"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/round_grey_corners"
                     android:hint="Enter Reason for refusal"
@@ -204,10 +214,11 @@
                 <EditText
                     android:id="@+id/customer_european_for_refusal_et"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:layout_marginVertical="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:gravity="center"
                     android:background="@drawable/round_grey_corners"
                     android:hint="Enter Reason for refusal"
                     android:padding="10dp" />
@@ -295,7 +306,8 @@
                 <EditText
                     android:id="@+id/customer_usa_for_refusal_et"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
+                    android:gravity="center"
                     android:layout_marginVertical="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"

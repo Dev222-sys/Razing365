@@ -13,25 +13,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
+
+
             android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@color/colorMidGrey"
+                android:background="@color/yellow"
                 android:gravity="center_vertical|start"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="@string/general_information"
+                    android:textSize="29sp"
+                    android:text="@string/query"
 
                     android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     app:textAllCaps="true"/>
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/general_information"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                  />
+
 
 
 
@@ -66,17 +77,53 @@
                 android:layout_marginRight="20dp"
                 android:text="Mobile No." />
 
-            <EditText
-                android:id="@+id/fragment_customer_query_mobileetno"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginVertical="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:inputType="phone"
+                android:orientation="horizontal"
+                android:weightSum="5"
+
                 android:background="@drawable/round_grey_corners"
-                android:hint="Enter Mobile Number"
-                android:padding="10dp" />
+                >
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/country_no_code"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    app:textSize="16dp"
+                    android:layout_height="match_parent"
+                    app:defaultNameCode="in" />
+                <TextView
+                    android:id="@+id/country_no_code_tv"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="+91"
+                    android:textColor="@color/colorBlack"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textSize="16dp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/fragment_customer_query_mobileetno"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:textSize="16dp"
+                    android:hint="Enter Mobile Number"
+                    android:inputType="number"
+                    />
+
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/customer_nationality_tv"
@@ -86,7 +133,6 @@
                 android:layout_marginRight="20dp"
                 android:text="Nationality" />
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -94,26 +140,39 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:orientation="horizontal"
+                android:weightSum="3"
 
                 android:background="@drawable/round_grey_corners"
-                android:padding="10dp" >
+                >
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/cuntry_nationality"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    app:textSize="16dp"
+                    app:countryPreference="US,IN,NZ"
+                    android:layout_height="match_parent"
+                    />
+
+                <TextView
+                    android:id="@+id/country_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:textColor="@color/colorBlack"
+
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:hint="Select Nationality"
+                   />
+
 
 
             </LinearLayout>
 
 
 
-            <EditText
-                android:id="@+id/customer_nationality_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
 
-                android:background="@drawable/round_grey_corners"
-                android:hint="Enter Nationality"
-                android:padding="10dp" />
 
             <TextView
                 android:id="@+id/customer_landline_tv"
@@ -123,7 +182,7 @@
                 android:layout_marginRight="20dp"
                 android:text="Landline Number" />
 
-            <EditText
+       <!--     <EditText
                 android:id="@+id/customer_laindline_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,7 +192,55 @@
 
                 android:background="@drawable/round_grey_corners"
                 android:hint="Enter Landline Number"
-                android:padding="10dp" />
+                android:padding="10dp" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:weightSum="5"
+
+                android:background="@drawable/round_grey_corners"
+                >
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/country_landline_code"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    app:textSize="16dp"
+                    android:layout_height="match_parent"
+                    app:defaultNameCode="in" />
+                <TextView
+                    android:id="@+id/country_landline_code_tv"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/colorBlack"
+                    android:layout_weight="1"
+                    android:text="+91"
+                    android:layout_gravity="center"
+                    android:textSize="16dp"
+
+                    />
+
+                <EditText
+                    android:id="@+id/customer_laindline_et"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:textSize="16dp"
+                    android:hint="Enter Landline Number"
+                    android:inputType="number"
+                    />
+
+
+
+            </LinearLayout>
+
 
 
             <TextView
@@ -198,6 +305,20 @@
                 android:padding="10dp" />
 
 
+            <EditText
+                android:id="@+id/customer_permanentadress_postal_et"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:inputType="number"
+
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Postal Code"
+                android:padding="10dp" />
+
+
 
             <TextView
 
@@ -217,6 +338,18 @@
                 android:padding="10dp"
                 android:background="@drawable/round_grey_corners"
                 android:hint="Enter Resiency Address" />
+            <EditText
+                android:id="@+id/customer_resiencyadress_postal_et"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:inputType="number"
+                android:hint="Enter Postal Code"
+                android:padding="10dp" />
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/submitgernalform"
                 app:backgroundTint="@color/colorRed"
@@ -227,21 +360,7 @@
 
                 app:rippleColor="@color/colorRed"
                 app:srcCompat="@drawable/ic_arrow" />
-            <!--    <Button
 
-                    android:layout_gravity="center"
-                    android:id="@+id/gernal_submit_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/fragment_employee_apply_leave_desc"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginVertical="10dp"
-
-                    android:background="@color/colorGreen"
-                    android:gravity="center"
-                    android:text="Submit"
-                    android:textColor="@color/colorWhite" />-->
 
         </LinearLayout>
 

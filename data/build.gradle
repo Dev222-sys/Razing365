@@ -79,10 +79,15 @@ dependencies {
     // for volly
    // implementation 'com.android.volley:volley:1.1.1@aar'
     compile 'com.android.volley:volley:1.1.1'
-/*
 
-    compile'com.github.joielechong:countrycodepicker:2.4.2'
-*/
+//meven -type
+    compile 'com.hbb20:ccp:1.7.1'
+
+//    compile 'com.github.scrounger:countrycurrencypicker:1.0.0'
+    compile 'com.github.scrounger:countrycurrencypicker:1.1.1'
+
+
+
 
 
 

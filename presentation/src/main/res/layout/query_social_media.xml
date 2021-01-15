@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@color/colorMidGrey"
+                android:background="@color/yellow"
                 android:gravity="center_vertical|start"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="20dp"
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="@string/hear_about"
+                    android:textSize="29sp"
+                    android:text="@string/query"
 
                     android:textColor="@color/colorWhite"
                     android:textStyle="bold"
                     app:textAllCaps="true"/>
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hear_about"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22sp"
+                    />
+
 
 
 
             </LinearLayout>
 
 
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Social Media" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginVertical="10dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/edittextupdatedesign"
                 android:orientation="horizontal"
@@ -60,10 +60,10 @@
 
 
                 <Spinner
-                    android:id="@+id/fragment_Social_media_spinner"
+                    android:id="@+id/hear_about"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/social_media"
+                    android:entries="@array/hear_about"
                     android:spinnerMode="dropdown"
                     android:theme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -74,6 +74,63 @@
 
             </LinearLayout>
 
+
+            <LinearLayout
+
+                android:visibility="gone"
+                android:id="@+id/socialmedia_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+
+                    android:layout_marginRight="20dp"
+                    android:text="Social Media" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/edittextupdatedesign"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <Spinner
+                        android:id="@+id/fragment_Social_media_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/social_media"
+                        android:spinnerMode="dropdown"
+                        android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+
+                        <requestFocus />
+                    </Spinner>
+
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/colorMidGrey" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+
+            android:id="@+id/print_advertisement_ll"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
             <TextView
 
                 android:layout_width="match_parent"
@@ -92,6 +149,15 @@
                 android:background="@drawable/round_grey_corners"
                 android:hint="Where ?"
                 android:padding="10dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/channel_partners_ll"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
 
             <TextView
 
@@ -111,6 +177,17 @@
                 android:background="@drawable/round_grey_corners"
                 android:hint="Who? Which Organization?"
                 android:padding="10dp" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/friend_collagues_ll"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            >
 
             <TextView
 
@@ -130,9 +207,11 @@
                 android:background="@drawable/round_grey_corners"
                 android:hint="Who? "
                 android:padding="10dp" />
+        </LinearLayout>
 
 
             <TextView
+                android:layout_marginTop="10dp"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -195,13 +274,13 @@
 
 
             </LinearLayout>
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/socialmedia"
-                app:backgroundTint="@color/colorRed"
                 style="@style/RegistrationFAB"
                 android:layout_width="wrap_content"
+                app:backgroundTint="@color/colorRed"
                 app:fabSize="normal"
-
 
 
                 app:rippleColor="@color/colorRed"
@@ -223,7 +302,6 @@
                     android:textColor="@color/colorWhite" />-->
 
         </LinearLayout>
-
 
 
     </ScrollView>

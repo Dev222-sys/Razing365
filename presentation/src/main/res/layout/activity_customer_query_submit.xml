@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     tools:context=".ui.CustomerQuery.QuerySubmit.Query_Submit">
+
 <ViewFlipper
     android:id="@+id/viewflipper_registration"
     android:layout_width="match_parent"
@@ -18,6 +19,20 @@
     <include layout="@layout/query_visa" />
     <include layout="@layout/query_social_media" />
     <include layout="@layout/applyingforfamily" />
+
+<!--
+
+
+    <include layout="@layout/query_visa" />
+    <include layout="@layout/queryemployeetype" />
+    <include layout="@layout/singleapplicant" />
+    <include layout="@layout/query_gernal_form" />
+
+    <include layout="@layout/query_social_media" />
+    <include layout="@layout/applyingforfamily" />
+-->
+
+
 
 </ViewFlipper>
 
