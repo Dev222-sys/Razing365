@@ -94,146 +94,6 @@
 
 
 
-
-
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="@string/interested_type" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/edittextupdatedesign"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-
-                <Spinner
-                    android:id="@+id/fragment_intersted_type_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/residency_passport"
-                    android:spinnerMode="dropdown"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light">
-
-
-                    <requestFocus />
-                </Spinner>
-
-
-            </LinearLayout>
-
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="@string/migrate" />
-
-            <EditText
-                android:id="@+id/customer_migrate_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-                android:hint="Enter plan"
-                android:padding="10dp" />
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="@string/investment_budget" />
-
-        <!--    <EditText
-                android:id="@+id/customer_budget_et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_grey_corners"
-                android:hint="Enter your investment Budget  "
-                android:padding="10dp" />-->
-
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="horizontal"
-                android:weightSum="5"
-
-                android:background="@drawable/round_grey_corners"
-                >
-               <!-- <com.hbb20.CountryCodePicker
-                    android:id="@+id/customer_budget_currency_picker"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    app:textSize="16dp"
-                    android:layout_height="match_parent"
-                    app:show_currency="true"
-                    />-->
-                <EditText
-                    android:id="@+id/customer_budget_et"
-
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:gravity="end"
-                    android:layout_weight="3"
-                    android:textSize="16dp"
-                    android:hint=" investment Budget "
-                    android:inputType="text"
-                    />
-
-                <TextView
-                    android:id="@+id/customer_budget_tv"
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/colorBlack"
-                    android:layout_weight="1"
-                    android:text="$"
-                    android:layout_gravity="center"
-                    android:textSize="18dp"
-
-                    />
-
-                <com.scrounger.countrycurrencypicker.library.Buttons.CountryCurrencyButton
-                    android:id="@+id/customer_budget_currency_picker"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    app:textSize="16dp"
-                    android:layout_height="match_parent"
-                    app:country_code="US"
-                    app:show_currency="true" />
-
-
-
-
-
-            </LinearLayout>
-
             <TextView
 
                 android:layout_width="match_parent"
@@ -252,6 +112,293 @@
                 android:background="@drawable/round_grey_corners"
                 android:hint="Enter business or Organization"
                 android:padding="10dp" />
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/uk_visa" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edittextupdatedesign"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <Spinner
+                    android:id="@+id/fragment_uk_visa_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/yes_no"
+
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+
+                    <requestFocus />
+                </Spinner>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:visibility="gone"
+                android:id="@+id/uk_visa_spinner_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="In which year ?" />
+
+                <EditText
+                    android:id="@+id/customer_uk_year_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter year"
+                    android:padding="10dp" />
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Reason for refusal ?" />
+
+                <EditText
+                    android:id="@+id/customer_Reason_for_refusal_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter Reason for refusal"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/colorMidGrey" />
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/european_visa" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edittextupdatedesign"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <Spinner
+                    android:id="@+id/fragment_european_visa_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/yes_no"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+
+                    <requestFocus />
+                </Spinner>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/european_visa_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="In which year ?" />
+
+                <EditText
+                    android:id="@+id/customer_european_year_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter year"
+                    android:padding="10dp" />
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Reason for refusal ?" />
+
+                <EditText
+                    android:id="@+id/customer_european_for_refusal_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter Reason for refusal"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/colorMidGrey" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/usa_visa" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edittextupdatedesign"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <Spinner
+                    android:id="@+id/fragment_usa_visa_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/yes_no"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+
+                    <requestFocus />
+                </Spinner>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/usa_visa_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="In which year ?" />
+
+                <EditText
+                    android:id="@+id/customer_usa_year_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter year"
+                    android:padding="10dp" />
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Reason for refusal ?" />
+
+                <EditText
+                    android:id="@+id/customer_usa_for_refusal_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="center"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_grey_corners"
+                    android:hint="Enter Reason for refusal"
+                    android:padding="10dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/colorMidGrey" />
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
 
 
 
