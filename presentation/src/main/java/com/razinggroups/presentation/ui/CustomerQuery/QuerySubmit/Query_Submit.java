@@ -27,6 +27,7 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.hbb20.CountryCodePicker;
+import com.irozon.sneaker.Sneaker;
 import com.razinggroups.data.sharedpreference.SharedPrefManager;
 import com.razinggroups.domain.model.CustomerQuery.Customer;
 import com.razinggroups.presentation.R;
@@ -57,7 +58,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
     String apply_family="null",apply_applicant="null",employe_type="null",intersted_type="null",uk_visa="null",european_visa="null",usa_visa="null",hear_aboutt="null",conacted="null",subscibe="null";
     EditText full_name, mobile_no, nationality, landline_no, passport_no, email, p_address, r_address,p_address_postal_code,r_address_postal_code;
 
-    String full_namee, mobile_noo, landline_noo, passport_noo, emaill, p_addresss, r_addresss,p_address_postal_codee,r_address_postal_codee;
+    String full_namee, mobile_noo, landline_noo, passport_noo, emaill, p_addresss, r_addresss,p_address_postal_codee,r_address_postal_codee,country_landline_code_ett;
 
     Button gernal_submit_btn;
     Customer customer = new Customer();
@@ -73,13 +74,13 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             socialmedia,
             applyforfamily_btn;
 
-    EditText family_name,family_passport,family_age,family_passport_copy;
+    EditText family_name,family_passport,family_age,family_passport_copy,country_landline_code_et;
     String family_namee,family_passportt,family_agee,country_nationlilty;
 
-    CountryCodePicker cuntry_nationality,country_no_code,country_landline_code;
+    CountryCodePicker cuntry_nationality,country_no_code;
 
     CountryCurrencyButton customer_budget_currency_picker;
-    TextView country_tv,country_no_code_tv,country_landline_code_tv,customer_budget_tv;
+    TextView country_tv,country_no_code_tv,customer_budget_tv;
 
     LinearLayout socialmedia_ll ,print_advertisement_ll,channel_partners_ll,friend_collagues_ll;
 
@@ -176,10 +177,10 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         cuntry_nationality=view.findViewById(R.id.cuntry_nationality);
         country_tv=view.findViewById(R.id.country_tv);
         country_no_code=view.findViewById(R.id.country_no_code);
-        country_landline_code=view.findViewById(R.id.country_landline_code);
+      //  country_landline_code=view.findViewById(R.id.country_landline_code);
 
         country_no_code_tv=view.findViewById(R.id.country_no_code_tv);
-        country_landline_code_tv=view.findViewById(R.id.country_landline_code_tv);
+        country_landline_code_et=view.findViewById(R.id.country_landline_code_et);
         customer_budget_tv=view.findViewById(R.id.customer_budget_tv);
         customer_budget_currency_picker=view.findViewById(R.id.customer_budget_currency_picker);
         back_arrowimage=view.findViewById(R.id.back_arrowimage);
@@ -197,7 +198,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             @Override
             public void onClick(View v) {
 
-                viewFlipper.setDisplayedChild(2);
+                viewFlipper.setDisplayedChild(1);
 
 
             }
@@ -239,7 +240,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                 //Toast.makeText(getContext(), "Updated " + cuntry_nationality.getSelectedCountryName(), Toast.LENGTH_SHORT).show();
             }
         });
-        country_landline_code.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+      /*  country_landline_code.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
             @Override
             public void onCountrySelected() {
 
@@ -248,7 +249,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                 //Toast.makeText(getContext(), "Updated " + cuntry_nationality.getSelectedCountryName(), Toast.LENGTH_SHORT).show();
             }
         });
-
+*/
 
 
 
@@ -272,15 +273,26 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         submitSingleapplicantform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (apply_applicant.equals("null")){
 
-                if(apply_family.equals("null"))
+
+
+                    Sneaker.with(getActivity())
+                            .setTitle("Please Select Applicant !")
+                            .setMessage("")
+                            .sneakError();
+
+
+                }
+
+                else if(apply_family.equals("null"))
                 {
 
-                    Toast.makeText(getActivity(), "Please Select Family details", Toast.LENGTH_SHORT).show();
+                    Sneaker.with(getActivity())
+                            .setTitle("Please Select Family details !")
+                            .setMessage("")
+                            .sneakError();
 
-                }else if (apply_applicant.equals("null")){
-
-                    Toast.makeText(getActivity(), "Please Select Applicant", Toast.LENGTH_SHORT).show();
 
                 }
                 else {
@@ -299,6 +311,8 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         queryempolyetype.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                                String customer_work_org=customer_work_org_name_et.getText().toString();
 
 
@@ -307,24 +321,44 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
                 if (employe_type.equals("null"))
                 {
-                    Toast.makeText(getActivity(), "Please Select business owner or a salaried employee type", Toast.LENGTH_SHORT).show();
+                    Sneaker.with(getActivity())
+                            .setTitle("Please Select business owner or a salaried employee type !")
+                            .setMessage("")
+                            .sneakError();
+
                 }else if(customer_work_org.isEmpty())
                 {
-                    Toast.makeText(getActivity(), "Enter Your business or Organization  !!!", Toast.LENGTH_SHORT).show();
+                    Sneaker.with(getActivity())
+                            .setTitle("Enter Your business or Organization !")
+                            .setMessage("")
+                            .sneakError();
+
                 } else if (uk_visa.equals("null"))
                 {
-                    Toast.makeText(getActivity(), "Please Select UK Visa !!!", Toast.LENGTH_SHORT).show();
 
+                    Sneaker.with(getActivity())
+                            .setTitle("Please Select UK Visa  !")
+                            .setMessage("")
+                            .sneakError();
 
 
                 }else if (european_visa.equals("null"))
                 {
-                    Toast.makeText(getActivity(), "Please Select European Visa !!!", Toast.LENGTH_SHORT).show();
+                    Sneaker.with(getActivity())
+                            .setTitle("Please Select European Visa !")
+                            .setMessage("")
+                            .sneakError();
+
 
                 }else if(usa_visa.equals("null"))
 
                 {
-                    Toast.makeText(getActivity(), "Please Select USA Visa !!!", Toast.LENGTH_SHORT).show();
+                    Sneaker.with(getActivity())
+                            .setTitle("Please Select USA Visa !")
+                            .setMessage("")
+                            .sneakError();
+
+
 
                 }
                 else {
@@ -348,15 +382,35 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                  if (intersted_type.equals("null"))
 
                 {
-                    Toast.makeText(getActivity(), "please Select Are you interested in residency or in a second passport", Toast.LENGTH_SHORT).show();
+
+
+                    Sneaker.with(getActivity())
+                            .setTitle("please Select Are you interested in residency or in a second passport !")
+                            .setMessage("")
+                            .sneakError();
+
+
 
                 }else if (customer_migrate.isEmpty())
                 {
-                    Toast.makeText(getActivity(), "Enter Your Plan", Toast.LENGTH_SHORT).show();
+
+                    Sneaker.with(getActivity())
+                            .setTitle("Enter your migrate details  !")
+                            .setMessage("")
+                            .sneakError();
+
+
+
 
                 }else if(customer_budget.isEmpty())
                 {
-                    Toast.makeText(getActivity(), "Enter Your Budget OR Select Currency Type  !!!", Toast.LENGTH_SHORT).show();
+                    Sneaker.with(getActivity())
+                            .setTitle("Enter Your Budget OR Select Currency Type  !")
+                            .setMessage("")
+                            .sneakError();
+
+
+
 
                 }
                  else
@@ -379,17 +433,31 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
                 if (hear_aboutt.equals("null"))
                 {
-                    Toast.makeText(getActivity(), "Please Select \n" +
-                            "        Where did you hear about us?", Toast.LENGTH_SHORT).show();
+
+
+                    Sneaker.with(getActivity())
+                            .setTitle("Please Select  Where did you hear about us? ")
+                            .setMessage("")
+                            .sneakError();
+
+
                 }else if (conacted.equals("null"))
                 {
-                    Toast.makeText(getActivity(), "Please Select \n" +
-                            "     How would you like to be contacted?", Toast.LENGTH_SHORT).show();
+                          Sneaker.with(getActivity())
+                            .setTitle("Please Select  How would you like to be contacted ? ")
+                            .setMessage("")
+                            .sneakError();
+
+
 
                 }else if (subscibe.equals("null"))
                 {
-                    Toast.makeText(getActivity(), "Please Select \n" +
-                            "         Would you like to subscribe for our emails and any relevant information? or any updates?", Toast.LENGTH_SHORT).show();
+                    Sneaker.with(getActivity())
+                            .setTitle("Please Select  Would you like to subscribe for our emails and any relevant information ? or any updates  ? ")
+                            .setMessage("")
+                            .sneakError();
+
+
 
                 }else {
 
@@ -419,14 +487,25 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         family_agee=family_age.getText().toString();
         if (family_namee.isEmpty())
         {
-            family_name.setError("please Enter Name");
+            Sneaker.with(getActivity())
+                    .setTitle("please Enter Name ")
+                    .setMessage("")
+                    .sneakError();
         }else if(family_passportt.isEmpty())
         {
-            family_passport.setError("Please Enter Passport");
+
+            Sneaker.with(getActivity())
+                    .setTitle("Please Enter Passport")
+                    .setMessage("")
+                    .sneakError();
 
         }else if (family_agee.isEmpty())
         {
-            family_age.setError("Please Enter Age");
+            Sneaker.with(getActivity())
+                    .setTitle("Please Enter Age")
+                    .setMessage("")
+                    .sneakError();
+
         }else {
             Toast.makeText(getActivity(), "Submit", Toast.LENGTH_SHORT).show();
             alertfamilySubmit();
@@ -454,50 +533,84 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         r_addresss=r_address.getText().toString();
         p_address_postal_codee=p_address_postal_code.getText().toString();
         r_address_postal_codee=r_address_postal_code.getText().toString();
+        country_landline_code_ett=country_landline_code_et.getText().toString();
+
 
 
 
         if (full_namee.isEmpty())
         {
-            full_name.setError("Please Enter Name");
-            full_name.findFocus();
+            Sneaker.with(getActivity())
+                    .setTitle("Please Enter full name as passport !")
+                    .setMessage("")
+                    .sneakError();
+
+
         }
         else if(mobile_noo.isEmpty())
         {
-            mobile_no.setError("Please enter mobile no");
-            mobile_no.findFocus();
+
+
+            Sneaker.with(getActivity())
+                    .setTitle("Please enter mobile no.!")
+                    .setMessage("")
+                    .sneakError();
+
+
         }
 
         else if(country_nationlilty.isEmpty())
         {
-            country_tv.setError("Please Select Nationality");
-            country_tv.findFocus();
+            Sneaker.with(getActivity())
+                    .setTitle("Please Select Nationality !")
+                    .setMessage("")
+                    .sneakError();
+
+
         }
         else if(landline_noo.isEmpty())
         {
-            landline_no.setError("Please enter Landline no");
-            landline_no.findFocus();
+            Sneaker.with(getActivity())
+                    .setTitle("Please enter Landline no.!")
+                    .setMessage("")
+                    .sneakError();
+
         }
         else if(passport_noo.isEmpty())
         {
-            passport_no.setError("Please enter Passport no");
-            passport_no.findFocus();
+
+            Sneaker.with(getActivity())
+                    .setTitle("Please enter Passport no.!")
+                    .setMessage("")
+                    .sneakError();
+
         }
         else if(emaill.isEmpty())
         {
-            email.setError("Please enter Email Address");
-            email.findFocus();
+
+            Sneaker.with(getActivity())
+                    .setTitle("Please enter Email Address !")
+                    .setMessage("")
+                    .sneakError();
+
         }
 
         else if(p_addresss.isEmpty())
         {
-            p_address.setError("Please enter permanent  Addres");
-            p_address.findFocus();
+
+            Sneaker.with(getActivity())
+                    .setTitle("Please enter permanent  Address !")
+                    .setMessage("")
+                    .sneakError();
+
         }
         else if(r_addresss.isEmpty())
         {
-            r_address.setError("Please enter Resiency Address");
-            r_address.findFocus();
+
+            Sneaker.with(getActivity())
+                    .setTitle("Please enter Resiency Address")
+                    .setMessage("")
+                    .sneakError();
         }
         else {
 
@@ -525,6 +638,8 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                         family_name.getText().clear();
                         family_age.getText().clear();
                         family_passport.getText().clear();
+                        realtion_ship();
+                        passportcopy();
 
                         /*realtion_ship.setSelected(true);
                         passportcopy.setSelected(true);

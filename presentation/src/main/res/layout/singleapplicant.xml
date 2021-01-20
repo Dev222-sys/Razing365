@@ -47,43 +47,9 @@
 
 
             <TextView
+
+
                 android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="@string/applyingforfamily" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginVertical="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-
-                android:background="@drawable/edittextupdatedesign"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-
-                <Spinner
-                    android:id="@+id/applyingforfamily"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/yes_no"
-                    android:spinnerMode="dropdown"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light">
-
-
-                    <requestFocus />
-                </Spinner>
-
-
-            </LinearLayout>
-
-
-            <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -116,6 +82,7 @@
 
 
             </LinearLayout>
+
 
 
             <LinearLayout
@@ -169,6 +136,46 @@
 
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/applyingforfamily" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+                android:background="@drawable/edittextupdatedesign"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+
+                <Spinner
+                    android:id="@+id/applyingforfamily"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/yes_no"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+
+                    <requestFocus />
+                </Spinner>
+
+
+            </LinearLayout>
+
+
+
+
+
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/submitSingleapplicantform"

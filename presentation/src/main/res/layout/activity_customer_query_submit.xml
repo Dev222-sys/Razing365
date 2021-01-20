@@ -23,6 +23,18 @@
 
 
 
+<!--
+    <include layout="@layout/queryemployeetype" />
+
+    <include layout="@layout/query_gernal_form" />
+    <include layout="@layout/singleapplicant" />
+    <include layout="@layout/query_visa" />
+    <include layout="@layout/query_social_media" />
+    <include layout="@layout/applyingforfamily" />
+-->
+
+
+
 
 </ViewFlipper>
 

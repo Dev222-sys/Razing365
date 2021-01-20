@@ -346,11 +346,17 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
         if (id == R.id.my_task) {
             openPersonalTaskFragment();
         } else if (id == R.id.brand_company) {
             openBrandCompany();
-        } else if (id == R.id.view_edit_employees) {
+        }
+        else if (id == R.id.Deshboard) {
+
+            openDashBoardFragment();
+        }
+        else if (id == R.id.view_edit_employees) {
             emptyFragmentStack();
             openEmployeesFragment();
         } else if (id == R.id.employees_task) {
@@ -416,6 +422,15 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
         transaction.replace(R.id.activity_main_frame, employeeFragment);
         transaction.commit();
         headerTitle.setText("Leave");
+    }
+    private void Deshboard() {
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        DashBoardFragment dashBoardFragment = new DashBoardFragment();
+        transaction.replace(R.id.activity_main_frame, dashBoardFragment);
+        transaction.commit();
+        headerTitle.setText("DASHBOARD");
     }
 
     public void emptyFragmentStack() {

@@ -206,23 +206,25 @@
 
                 android:background="@drawable/round_grey_corners"
                 >
-                <com.hbb20.CountryCodePicker
+              <!--  <com.hbb20.CountryCodePicker
                     android:id="@+id/country_landline_code"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     app:textSize="16dp"
                     android:layout_height="match_parent"
-                    app:defaultNameCode="in" />
-                <TextView
-                    android:id="@+id/country_landline_code_tv"
-                    android:gravity="center"
+                    app:defaultNameCode="in" />-->
+
+                <EditText
+                    android:id="@+id/country_landline_code_et"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:textColor="@color/colorBlack"
-                    android:layout_weight="1"
-                    android:text=""
                     android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="code"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
                     android:textSize="16dp"
 
                     />
@@ -232,7 +234,7 @@
 
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
+                    android:layout_weight="4"
                     android:textSize="16dp"
                     android:hint="Enter Landline Number"
                     android:inputType="number"
