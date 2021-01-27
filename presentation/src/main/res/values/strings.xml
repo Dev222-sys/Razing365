@@ -126,11 +126,11 @@
 
     <string name="work_name">Name of the business or organization you work for?</string>
 
-    <string name="uk_visa">Have you ever been refused a UK Visa? </string>
+    <string name="uk_visa">Have you ever  refused a UK Visa? </string>
 
-    <string name="european_visa">Have you ever been refused a European Visa? </string>
+    <string name="european_visa">Have you ever  refused a European Visa? </string>
 
-    <string name="usa_visa">Have you ever been refused a USA Visa?  </string>
+    <string name="usa_visa">Have you ever  refused a USA Visa?  </string>
 
     <string name="interested_type">Are you interested in residency or in a second passport?  </string>
 

@@ -329,7 +329,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text=" Address of Resiency" />
+                android:text=" Address of Residency" />
 
             <EditText
                 android:id="@+id/customer_resiencyadress_et"
@@ -340,7 +340,7 @@
                 android:layout_marginRight="20dp"
                 android:padding="10dp"
                 android:background="@drawable/round_grey_corners"
-                android:hint="Enter Resiency Address" />
+                android:hint="Enter Residency Address" />
             <EditText
                 android:id="@+id/customer_resiencyadress_postal_et"
                 android:layout_width="200dp"
