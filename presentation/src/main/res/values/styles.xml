@@ -31,4 +31,12 @@
         <item name="android:layout_gravity">bottom|end</item>
         <item name="android:layout_margin">20dp</item>
     </style>
+    <style name="RegistrationFABback">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:layout_gravity">bottom|start</item>
+    </style>
+
+
 </resources>

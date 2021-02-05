@@ -21,9 +21,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.razinggroups.data.network.RetrofitClient;
 import com.razinggroups.presentation.R;
-import com.razinggroups.presentation.ui.CustomerQuery.CustomerQueryFragment;
 import com.razinggroups.presentation.ui.CustomerQuery.CustomerSection.CustomerQueryMainFragment;
 import com.razinggroups.presentation.ui.employeeHomeScreen.EmployeeTaskDetailList.EmployeeTaskDetailListFragment;
 import com.razinggroups.presentation.ui.login.LoginActivity;
@@ -31,11 +29,6 @@ import com.razinggroups.presentation.ui.myTask.MyTaskFragment;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 /*
 
 import okhttp3.Request;

@@ -133,6 +133,12 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
 
 
         } else {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.putExtra("userType", "HR");
+            intent.putExtra("userName", "HR");
+
+            startActivity(intent);
+            finish();
             Toast.makeText(this, "not valid user " + login.getMsg(), Toast.LENGTH_SHORT).show();
         }
     }

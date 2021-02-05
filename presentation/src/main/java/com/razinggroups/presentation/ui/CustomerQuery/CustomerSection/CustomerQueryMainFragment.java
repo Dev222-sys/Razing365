@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 
 import com.razinggroups.presentation.R;
 
-import com.razinggroups.presentation.ui.CustomerQuery.CustomerQueryFragment;
 import com.razinggroups.presentation.ui.CustomerQuery.QuerySubmit.Query_Submit;
 import com.razinggroups.presentation.ui.CustomerQuery.ViewQuery.ViewQueryFragment;
 

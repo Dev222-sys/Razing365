@@ -17,13 +17,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.razinggroups.presentation.MainApplication;
 import com.razinggroups.presentation.R;
 import com.razinggroups.presentation.base.BaseActivity;
-import com.razinggroups.presentation.ui.CustomerQuery.CustomerQueryFragment;
+import com.razinggroups.presentation.hrManagement.MoreDetails;
+import com.razinggroups.presentation.hrManagement.projectTrcking.ProjectTrcking;
 import com.razinggroups.presentation.ui.CustomerQuery.CustomerSection.CustomerQueryMainFragment;
 import com.razinggroups.presentation.ui.brandCompany.BrandCompanyActivity;
 import com.razinggroups.presentation.ui.dashboard.DashBoardFragment;
@@ -48,10 +50,21 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
     Toolbar toolbar;
 
     ImageView toggleIv;
+    RelativeLayout activity_main_footer_layout,hr_footer_layout;
     TextView headerTitle;
     LinearLayout dashBoardLayout, personalTaskLayout, employeeTaskLayout, holidayLayout;
     TextView dashBoardTv, personalTaskTv, employeeTaskTv, holidayTv;
     ImageView dashBoardIv, personalTaskIv, employeeTaskIv, holidayIv;
+
+    LinearLayout moreLayout  ,projectTrackingLayout;
+
+    TextView moreTv, prjectTrackingTv;
+
+    ImageView moreIv ,prjectTrackingIv;
+
+
+
+
 
 
     ImageView addIv;
@@ -83,21 +96,35 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
         if (userType.equalsIgnoreCase("MasterAdmin")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.activity_main_drawer_admin);
+            openDashBoardFragment();
 
         } else if (userType.equalsIgnoreCase("Admin")) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.activity_main2_drawer);
+            openDashBoardFragment();
 
         }
-        openDashBoardFragment();
+        else if (userType.equalsIgnoreCase("HR")) {
+
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.activity_main3_drawer);
+            activity_main_footer_layout.setVisibility(View.GONE);
+
+            hr_footer_layout.setVisibility(View.VISIBLE);
+
+
+        }
+
 
     }
 
     private void initViews() {
+
         toggleIv = findViewById(R.id.activity_main_header_home_iv);
         headerTitle = findViewById(R.id.activity_main_header_title);
         addIv = findViewById(R.id.activity_main_footer_add_icon);
-
+        activity_main_footer_layout=findViewById(R.id.activity_main_footer_layout);
+        hr_footer_layout=findViewById(R.id.hr_footer_layout);
 
         dashBoardLayout = findViewById(R.id.activity_main_footer_dashboard);
         dashBoardIv = findViewById(R.id.activity_main_footer_dashboard_iv);
@@ -114,6 +141,18 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
         holidayLayout = findViewById(R.id.activity_main_footer_holiday_list);
         holidayIv = findViewById(R.id.activity_main_footer_holiday_list_iv);
         holidayTv = findViewById(R.id.activity_main_footer_holiday_list_tv);
+
+
+        moreLayout=findViewById(R.id.hr_footer_More);
+        moreTv=findViewById(R.id.hr_footer_More_tv);
+        moreIv=findViewById(R.id.hr_footer_More_iv);
+
+
+        projectTrackingLayout=findViewById(R.id.hr_footer_personal_task);
+        prjectTrackingTv=findViewById(R.id.hr_footer_project_tracking_tv);
+        prjectTrackingIv=findViewById(R.id.hr_footer_project_tracking_iv);
+
+
 
 
         employeeTaskLayout.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +193,24 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
                 openCreateTaskHomeActivity();
             }
         });
+
+
+        moreLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHrMoreFragment();
+
+            }
+        });
+        projectTrackingLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openHrProjetTrackingFragment();
+
+
+            }
+        });
     }
 
     private void footerVisibilityManager(String string) {
@@ -180,6 +237,73 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
                 personalTaskIv.setImageResource(R.drawable.personal_task_grey);
                 employeeTaskIv.setImageResource(R.drawable.employee_tasks_grey);
                 holidayIv.setImageResource(R.drawable.holiday_list_grey);
+                break;
+            case "EmployeeTask":
+
+                dashBoardTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+                personalTaskTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+                employeeTaskTv.setTextColor(ContextCompat.getColor(this, R.color.colorRed));
+                holidayTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+
+                dashBoardIv.setImageResource(R.drawable.dashboard_grey);
+                personalTaskIv.setImageResource(R.drawable.personal_task_grey);
+                employeeTaskIv.setImageResource(R.drawable.employee_tasks_red);
+                holidayIv.setImageResource(R.drawable.holiday_list_grey);
+                break;
+            case "PersonalTask":
+                dashBoardTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+                personalTaskTv.setTextColor(ContextCompat.getColor(this, R.color.colorRed));
+                employeeTaskTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+                holidayTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+
+                dashBoardIv.setImageResource(R.drawable.dashboard_grey);
+                personalTaskIv.setImageResource(R.drawable.personal_task_red);
+                employeeTaskIv.setImageResource(R.drawable.employee_tasks_grey);
+                holidayIv.setImageResource(R.drawable.holiday_list_grey);
+                break;
+        }
+
+    }
+    private void footerVisibilityHRManager(String string) {
+        switch (string) {
+            case "More":
+
+                moreTv.setTextColor(ContextCompat.getColor(this, R.color.colorRed));
+                prjectTrackingTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+
+                /*personalTaskTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+                employeeTaskTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+                holidayTv.setTextColor(ContextCompat.getColor(this, R.color.colorRed));
+                Toast.makeText(this, "more", Toast.LENGTH_SHORT).show();
+*/
+              moreIv.setImageResource(R.drawable.holiday_list_red);
+              prjectTrackingIv.setImageResource(R.drawable.personal_task_grey);
+              /*
+                personalTaskIv.setImageResource(R.drawable.personal_task_grey);
+                employeeTaskIv.setImageResource(R.drawable.employee_tasks_grey);
+                holidayIv.setImageResource(R.drawable.holiday_list_red);
+              */
+                break;
+            case "ProjectTracking":
+
+                moreTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+                prjectTrackingTv.setTextColor(ContextCompat.getColor(this, R.color.colorRed));
+
+                moreIv.setImageResource(R.drawable.holiday_list_grey);
+                prjectTrackingIv.setImageResource(R.drawable.personal_task_red);
+
+/*
+
+                dashBoardTv.setTextColor(ContextCompat.getColor(this, R.color.colorRed));
+                personalTaskTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+                employeeTaskTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+                holidayTv.setTextColor(ContextCompat.getColor(this, R.color.colorDarkGrey));
+*/
+
+               /* dashBoardIv.setImageResource(R.drawable.dashboard_red);
+                personalTaskIv.setImageResource(R.drawable.personal_task_grey);
+                employeeTaskIv.setImageResource(R.drawable.employee_tasks_grey);
+                holidayIv.setImageResource(R.drawable.holiday_list_grey);*/
                 break;
             case "EmployeeTask":
 
@@ -443,6 +567,37 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
     @Override
     public MainViewModel getViewModel() {
         return mainViewModel;
+    }
+
+
+
+    /*
+    HR Management
+    */
+
+    private void openHrMoreFragment()
+    {
+        footerVisibilityHRManager("More");
+        emptyFragmentStack();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        MoreDetails moreDetailsFragment = new MoreDetails();
+        transaction.replace(R.id.activity_main_frame, moreDetailsFragment);
+        transaction.commit();
+        headerTitle.setText("MORE");
+    }
+     private void openHrProjetTrackingFragment()
+    {
+        footerVisibilityHRManager("ProjectTracking");
+
+        emptyFragmentStack();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        ProjectTrcking projectTrckingFragment = new ProjectTrcking();
+        transaction.replace(R.id.activity_main_frame, projectTrckingFragment);
+        transaction.commit();
+        Toast.makeText(this, "ProjectTraking", Toast.LENGTH_SHORT).show();
+        headerTitle.setText("PROJECT TRACKING");
     }
 
 

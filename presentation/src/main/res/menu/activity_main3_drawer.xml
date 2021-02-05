@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Employee_data_management"
+            android:actionLayout="@layout/employee_task_item"
+            android:title="Employee data management" />
+        <item
+            android:id="@+id/Job_opening_management"
+            android:title=" Job opening management" />
+        <item
+            android:id="@+id/Applicants_management"
+            android:title="Applicants management" />
+        <item
+            android:id="@+id/customerquery"
+            android:title="Customer Query" />
+
+        <item
+            android:id="@+id/Employee_training_data_management"
+            android:title=" Employee training data management" />
+        <item
+            android:id="@+id/Benefit_management"
+            android:title=" Benefit management" />
+        <item
+            android:id="@+id/Documents_management"
+            android:title="Documents management" />
+        <item
+            android:id="@+id/Project_Tracking"
+            android:title="Project Tracking" />
+
+
+    </group>
+
+
+</menu>

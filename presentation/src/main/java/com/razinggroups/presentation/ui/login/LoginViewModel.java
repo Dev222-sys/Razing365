@@ -29,6 +29,7 @@ public class LoginViewModel extends BaseViewModel<LoginNavigator> {
             public void onSuccess(Login login) {
                 if(getNavigator()!=null)
                     getNavigator().onLoginSuccess(login);
+                //s
             }
 
             @Override

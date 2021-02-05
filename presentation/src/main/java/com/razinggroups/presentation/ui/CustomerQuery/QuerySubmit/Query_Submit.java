@@ -1,16 +1,11 @@
 package com.razinggroups.presentation.ui.CustomerQuery.QuerySubmit;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.arch.lifecycle.ViewModelProvider;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.res.Resources;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -28,19 +22,31 @@ import android.widget.ViewFlipper;
 
 import com.hbb20.CountryCodePicker;
 import com.irozon.sneaker.Sneaker;
+import com.razinggroups.data.network.RetrofitClient;
 import com.razinggroups.data.sharedpreference.SharedPrefManager;
 import com.razinggroups.domain.model.CustomerQuery.Customer;
 import com.razinggroups.presentation.R;
-import com.razinggroups.presentation.ui.CustomerQuery.CustomerQueryViewModel;
 import com.scrounger.countrycurrencypicker.library.Buttons.CountryCurrencyButton;
 import com.scrounger.countrycurrencypicker.library.Country;
 import com.scrounger.countrycurrencypicker.library.Currency;
 import com.scrounger.countrycurrencypicker.library.Listener.CountryCurrencyPickerListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Query_Submit extends Fragment  implements AdapterView.OnItemSelectedListener{
 
 
     private ViewFlipper viewFlipper;
+
+    ProgressDialog progressDialog;
 
 
     Spinner applyingforfamily,as_single_spinner, as_mentioned_spinner, customer_employe_type_sp, fragment_uk_visa_spinner,
@@ -53,12 +59,12 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             passportcopy,
             realtion_ship,
             hear_about;
-    ImageView back_arrowimage;
 
-    String apply_family="null",apply_applicant="null",employe_type="null",intersted_type="null",uk_visa="null",european_visa="null",usa_visa="null",hear_aboutt="null",conacted="null",subscibe="null";
+
+    String apply_family="null",apply_applicant="null",main_Applicent="null", employe_type="null",intersted_type="null",uk_visa="null",european_visa="null",usa_visa="null",hear_aboutt="null",social_media="null",conacted="null",subscibe="null";
     EditText full_name, mobile_no, nationality, landline_no, passport_no, email, p_address, r_address,p_address_postal_code,r_address_postal_code;
 
-    String full_namee, mobile_noo, landline_noo, passport_noo, emaill, p_addresss, r_addresss,p_address_postal_codee,r_address_postal_codee,country_landline_code_ett;
+    String full_namee, mobile_noo, country_code,landline_noo, passport_noo, emaill, p_addresss, r_addresss,p_address_postal_codee,r_address_postal_codee,country_landline_code_ett;
 
     Button gernal_submit_btn;
     Customer customer = new Customer();
@@ -66,16 +72,18 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
     LinearLayout applicant_or_not, uk_visa_spinner_ly, european_visa_ly, usa_visa_ly;
 
     EditText customer_work_org_name_et, customer_uk_year_et, customer_Reason_for_refusal_et,
-            customer_migrate_et,customer_budget_et;
+            customer_migrate_et,customer_budget_et,customer_european_year_et,customer_european_for_refusal_et,customer_usa_year_et,customer_usa_for_refusal_et;
+    String  customer_work_org,uk_year,uk_reason,european_year,european_reason,usa_year,usa_reason ,customer_budget,customer_migrate;
     FloatingActionButton submitgernalform,
             submitSingleapplicantform,
             queryempolyetype,
             query_visa,
             socialmedia,
-            applyforfamily_btn;
+            applyforfamily_btn,
+            back_arrowimage;
 
     EditText family_name,family_passport,family_age,family_passport_copy,country_landline_code_et;
-    String family_namee,family_passportt,family_agee,country_nationlilty;
+    String  passport="null" , realtion="null",family_namee,family_passportt,family_agee,country_nationlilty;
 
     CountryCodePicker cuntry_nationality,country_no_code;
 
@@ -115,9 +123,36 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
     private void initViews(View view) {
        // progressBar = view.findViewById(R.id.CustomerQueryFragment_progress_bar);
 
-        viewFlipper = view.findViewById(R.id.viewflipper_registration);
-        viewFlipper.setDisplayedChild(0);
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
 
+        viewFlipper = view.findViewById(R.id.viewflipper_registration);
+
+        try {
+
+
+            if (SharedPrefManager.getInstans(getActivity()).getkyc_id().isEmpty()
+            ) {
+                viewFlipper.setDisplayedChild(0);
+
+              //  Toast.makeText(getActivity(), "Empty", Toast.LENGTH_SHORT).show();
+
+            }else if (SharedPrefManager.getInstans(getActivity()).getkyc_id().equals("1"))
+            {
+                viewFlipper.setDisplayedChild(0);
+
+            }
+
+            else {
+                viewFlipper.setDisplayedChild(1);
+
+            }
+
+        }catch (Exception e)
+        {
+
+        }
         submitgernalform=view.findViewById(R.id.submitgernalform);
         submitSingleapplicantform=view.findViewById(R.id.submitSingleapplicantform);
         applyforfamily_btn=view.findViewById(R.id.applyforfamily_btn);
@@ -166,9 +201,10 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         p_address_postal_code= view.findViewById(R.id.customer_permanentadress_postal_et);
         r_address = (EditText) view.findViewById(R.id.customer_resiencyadress_et);
         r_address_postal_code = (EditText) view.findViewById(R.id.customer_resiencyadress_postal_et);
-
-
-
+        customer_european_year_et=view.findViewById(R.id.customer_european_year_et);
+        customer_european_for_refusal_et=view.findViewById(R.id.customer_european_year_et);
+        customer_usa_year_et=view.findViewById(R.id.customer_usa_year_et);
+        customer_usa_for_refusal_et=view.findViewById(R.id.customer_usa_for_refusal_et);
         family_name=view.findViewById(R.id.familycustomer_query_name_et);
         family_passport=view.findViewById(R.id.familycustomer_passport_et);
         family_age=view.findViewById(R.id.familycustomer_age_et);
@@ -282,8 +318,8 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                             .setMessage("")
                             .sneakError();
 
-
                 }
+
 
                 else if(apply_family.equals("null"))
                 {
@@ -296,7 +332,6 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
                 }
                 else {
-                    Toast.makeText(getActivity(), apply_family+apply_applicant+"", Toast.LENGTH_SHORT).show();
 
                     viewFlipper.setDisplayedChild(2);
 
@@ -313,8 +348,13 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             public void onClick(View v) {
 
 
-                               String customer_work_org=customer_work_org_name_et.getText().toString();
-
+                customer_work_org=customer_work_org_name_et.getText().toString();
+                uk_year=customer_uk_year_et.getText().toString();
+                uk_reason=customer_Reason_for_refusal_et.getText().toString();
+                european_year=customer_european_year_et.getText().toString();
+                european_reason=customer_european_for_refusal_et.getText().toString();
+                usa_year=customer_usa_year_et.getText().toString();
+                usa_reason=customer_usa_for_refusal_et.getText().toString();
 
 
 
@@ -362,7 +402,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
                 }
                 else {
-                    Toast.makeText(getActivity(), employe_type+intersted_type+"", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getActivity(), employe_type+intersted_type+"", Toast.LENGTH_SHORT).show();
 
                     viewFlipper.setDisplayedChild(3);
                 }
@@ -375,8 +415,8 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         query_visa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String customer_migrate=customer_migrate_et.getText().toString();
-                String customer_budget=customer_budget_et.getText().toString();
+                 customer_migrate=customer_migrate_et.getText().toString();
+                 customer_budget=customer_budget_et.getText().toString();
 
 
                  if (intersted_type.equals("null"))
@@ -431,6 +471,10 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             @Override
             public void onClick(View v) {
 
+
+
+
+
                 if (hear_aboutt.equals("null"))
                 {
 
@@ -462,7 +506,59 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                 }else {
 
 
-                    onCreatealert("Query Was Generated successfully");
+
+                     progressDialog.show();
+
+                    //SharedPrefManager.getInstans(getActivity()).getUsername();
+
+                    Call<ResponseBody> call = RetrofitClient
+                            .getInstance()
+                            .getApi().submitQueryFinal(SharedPrefManager.getInstans(getActivity()).getkyc_id(),apply_applicant,main_Applicent,apply_family,employe_type,customer_work_org,
+                                    uk_visa,uk_year,uk_reason,european_visa,european_year,european_reason,usa_visa,usa_year,usa_reason,intersted_type,customer_migrate,
+                                    customer_budget,hear_aboutt,social_media,conacted,subscibe);
+                                    call.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                           // Toast.makeText(getActivity(), response.toString()+"", Toast.LENGTH_SHORT).show();
+                            String s = null;
+                            if (response.code()==200)
+                            {
+                                try {
+                                    s = response.body().string();
+                                    JSONObject jsonObject = new JSONObject(s);
+                                    String msg = jsonObject.getString("message");
+                                    progressDialog.dismiss();
+                                    //  Toast.makeText(getActivity(), SharedPrefManager.getInstans(getActivity()).getkyc_id(), Toast.LENGTH_SHORT).show();
+                                    onCreatealert(msg);
+                                    SharedPrefManager.getInstans(getActivity()).kyc_id("1");
+
+                                    getActivity().onBackPressed();
+                                } catch (IOException | JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            else
+                            {
+                                progressDialog.dismiss();
+
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            Toast.makeText(getActivity(), "Server ", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+
+                        }
+                    });
+
+
+                    //  SharedPrefManager.getInstans(getActivity()).getUsername();
+
+                    // Toast.makeText(getActivity(), SharedPrefManager.getInstans(getActivity()).getUsername(), Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+
+
+                   // onCreatealert("Query Was Generated successfully");
                 }
 
 
@@ -485,7 +581,16 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         family_namee=family_name.getText().toString();
         family_passportt=family_passport.getText().toString();
         family_agee=family_age.getText().toString();
-        if (family_namee.isEmpty())
+
+
+        if (realtion.equals("null"))
+        {
+            Sneaker.with(getActivity())
+                    .setTitle("Please select Relationship of family member ")
+                    .setMessage("")
+                    .sneakError();
+        }
+        else  if (family_namee.isEmpty())
         {
             Sneaker.with(getActivity())
                     .setTitle("please Enter Name ")
@@ -506,9 +611,68 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                     .setMessage("")
                     .sneakError();
 
-        }else {
-            Toast.makeText(getActivity(), "Submit", Toast.LENGTH_SHORT).show();
-            alertfamilySubmit();
+        }else if (passport.equals("null"))
+        {
+            Sneaker.with(getActivity())
+                    .setTitle("Please Select Passport Copy")
+                    .setMessage("")
+                    .sneakError();
+
+        }
+
+
+
+        else {
+
+
+            progressDialog.show();
+
+
+            Call<ResponseBody> call = RetrofitClient
+                    .getInstance()
+                    .getApi().submitQueryFamily(SharedPrefManager.getInstans(getActivity()).getkyc_id(),realtion,family_namee,family_passportt,family_agee,passport);
+
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    String s = null;
+                    if (response.code()==200)
+                    {
+                        try {
+                            s = response.body().string();
+                            JSONObject jsonObject = new JSONObject(s);
+                            String msg = jsonObject.getString("message");
+
+
+                            progressDialog.dismiss();
+
+                            alertfamilySubmit(msg);
+
+
+
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else
+                    {
+                        progressDialog.dismiss();
+
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Toast.makeText(getActivity(), "Server ", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+
+                }
+            });
+
+
+            //  SharedPrefManager.getInstans(getActivity()).getUsername();
+
+            // Toast.makeText(getActivity(), SharedPrefManager.getInstans(getActivity()).getUsername(), Toast.LENGTH_SHORT).show();
+            progressDialog.dismiss();
         }
 
 
@@ -534,12 +698,14 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         p_address_postal_codee=p_address_postal_code.getText().toString();
         r_address_postal_codee=r_address_postal_code.getText().toString();
         country_landline_code_ett=country_landline_code_et.getText().toString();
-
+        country_code=country_no_code_tv.getText().toString();
 
 
 
         if (full_namee.isEmpty())
         {
+            //progressDialog.show();
+
             Sneaker.with(getActivity())
                     .setTitle("Please Enter full name as passport !")
                     .setMessage("")
@@ -614,17 +780,63 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         }
         else {
 
-            viewFlipper.setDisplayedChild(1);
 
-            Toast.makeText(getActivity(), "Submit", Toast.LENGTH_SHORT).show();
+            progressDialog.show();
+
+
+            Call<ResponseBody> call = RetrofitClient
+                    .getInstance()
+                    .getApi().submitQueryGenerate( SharedPrefManager.getInstans(getActivity()).getUsername(),full_namee,emaill,country_code+mobile_noo,
+                            country_landline_code_et.getText().toString()+ landline_noo,passport_noo,country_nationlilty,p_addresss,p_address_postal_codee,r_addresss,r_address_postal_codee);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    String s = null;
+                    if (response.code()==200)
+                    {
+                        try {
+                            s = response.body().string();
+                            JSONObject jsonObject = new JSONObject(s);
+                            String msg = jsonObject.getString("message");
+                            String kyc_id = jsonObject.getString("kyc_id");
+                            progressDialog.dismiss();
+                            SharedPrefManager.getInstans(getActivity()).kyc_id(kyc_id);
+                          //  Toast.makeText(getActivity(), SharedPrefManager.getInstans(getActivity()).getkyc_id(), Toast.LENGTH_SHORT).show();
+                            onCreatealert(msg);
+                          viewFlipper.setDisplayedChild(1);
+
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else
+                    {
+                        progressDialog.dismiss();
+
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Toast.makeText(getActivity(), "Server ", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+
+                }
+            });
+
+
+          //  SharedPrefManager.getInstans(getActivity()).getUsername();
+
+           // Toast.makeText(getActivity(), SharedPrefManager.getInstans(getActivity()).getUsername(), Toast.LENGTH_SHORT).show();
+            progressDialog.dismiss();
         }
 
     }
-    public void alertfamilySubmit()
+    public void alertfamilySubmit(String title)
     {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Family member details was submitted")
+        builder.setIcon(R.drawable.logo_black)
+                .setTitle(title)
                 .setMessage("Do you  want to add  another family details?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
@@ -633,7 +845,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                     {
                         //Toast.makeText(getActivity(), "Add more", Toast.LENGTH_SHORT).show();
                        // dialog.cancel();
-                        viewFlipper.setDisplayedChild(5);
+                      viewFlipper.setDisplayedChild(5);
 
                         family_name.getText().clear();
                         family_age.getText().clear();
@@ -651,7 +863,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                 {
                     public void onClick(DialogInterface dialog, int id)
                     {
-                        viewFlipper.setDisplayedChild(1);
+                        viewFlipper.setDisplayedChild(2);
 
                         dialog.cancel();
                     }
@@ -666,7 +878,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             public void onClick(DialogInterface dialog, int id) {
                 //do things
                 dialog.dismiss();
-                getActivity().onBackPressed();
+                //getActivity().onBackPressed();
             }
         });
         android.support.v7.app.AlertDialog alert = builder.create();
@@ -715,7 +927,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if (position == 1) {
 
-                    apply_family= as_single_spinner.getSelectedItem().toString();
+                    apply_family= applyingforfamily.getSelectedItem().toString();
 
 
                     viewFlipper.setDisplayedChild(5);
@@ -725,7 +937,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
 
 
-                    apply_family= as_single_spinner.getSelectedItem().toString();
+                    apply_family= applyingforfamily.getSelectedItem().toString();
 
                     //viewFlipper.setDisplayedChild(2);
                 }
@@ -756,14 +968,15 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if (position == 1) {
 
-                    String text = passportcopy.getSelectedItem().toString();
-                    Toast.makeText(getActivity(), text+"", Toast.LENGTH_SHORT).show();
+                  passport = passportcopy.getSelectedItem().toString();
+                    Toast.makeText(getActivity(), passport+"", Toast.LENGTH_SHORT).show();
 
 
-                } else {
+                } else if (position == 2) {
 
-                    String text = as_single_spinner.getSelectedItem().toString();
-                    Toast.makeText(getActivity(), text+"", Toast.LENGTH_SHORT).show();
+                    passport = passportcopy.getSelectedItem().toString();
+                    Toast.makeText(getActivity(), passport+"", Toast.LENGTH_SHORT).show();
+
                 }
 
 
@@ -795,8 +1008,8 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
 
 
-                    String text = realtion_ship.getSelectedItem().toString();
-                    Toast.makeText(getActivity(), text+"", Toast.LENGTH_SHORT).show();
+                     realtion = realtion_ship.getSelectedItem().toString();
+                    Toast.makeText(getActivity(), realtion+"", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -825,7 +1038,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 
 
-                Toast.makeText(getActivity(), hear_about.getSelectedItem().toString()+"", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), hear_about.getSelectedItem().toString()+"", Toast.LENGTH_SHORT).show();
 
                 socialmedia_ll.setVisibility(View.GONE);
                 print_advertisement_ll.setVisibility(View.GONE);
@@ -883,9 +1096,12 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                 if (position == 1) {
                     apply_applicant=as_single_spinner.getSelectedItem().toString();
                     applicant_or_not.setVisibility(View.VISIBLE);
+                    Toast.makeText(getActivity(), apply_applicant+"", Toast.LENGTH_SHORT).show();
                 } else if (position==2){
                     apply_applicant=as_single_spinner.getSelectedItem().toString();
                     applicant_or_not.setVisibility(View.GONE);
+
+                    Toast.makeText(getActivity(), apply_applicant+"", Toast.LENGTH_SHORT).show();
 
                     }
                 else {
@@ -917,11 +1133,14 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if (position == 1) {
-
-                    //apply_applicant=as_mentioned_spinner.getSelectedItem().toString();
+                    main_Applicent=as_mentioned_spinner.getSelectedItem().toString();
+                    Toast.makeText(getContext(), main_Applicent+"", Toast.LENGTH_SHORT).show();
+                 //   apply_applicant=as_mentioned_spinner.getSelectedItem().toString();
 
                 } else if (position==2){
-                    //apply_applicant=as_mentioned_spinner.getSelectedItem().toString();
+             //       apply_applicant=as_mentioned_spinner.getSelectedItem().toString();
+                    main_Applicent=as_mentioned_spinner.getSelectedItem().toString();
+                    Toast.makeText(getContext(), main_Applicent+"", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -1213,9 +1432,46 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if (position == 1) {
+                    social_media=fragment_Social_media_spinner.getSelectedItem().toString();
                     //usa_visa_ly.setVisibility(View.VISIBLE);
-                } else {
+                } else if (position==2){
 
+                    social_media=fragment_Social_media_spinner.getSelectedItem().toString();
+
+                    //usa_visa_ly.setVisibility(View.GONE);
+
+                }
+                else if (position==3){
+
+                    social_media=fragment_Social_media_spinner.getSelectedItem().toString();
+
+                    //usa_visa_ly.setVisibility(View.GONE);
+
+                }
+                else if (position==4){
+
+                    social_media=fragment_Social_media_spinner.getSelectedItem().toString();
+
+                    //usa_visa_ly.setVisibility(View.GONE);
+
+                }
+                else if (position==5){
+
+                    social_media=fragment_Social_media_spinner.getSelectedItem().toString();
+
+                    //usa_visa_ly.setVisibility(View.GONE);
+
+                }
+                else if (position==6){
+
+                    social_media=fragment_Social_media_spinner.getSelectedItem().toString();
+
+                    //usa_visa_ly.setVisibility(View.GONE);
+
+                }
+                else if (position==7){
+
+                    social_media=fragment_Social_media_spinner.getSelectedItem().toString();
 
                     //usa_visa_ly.setVisibility(View.GONE);
 

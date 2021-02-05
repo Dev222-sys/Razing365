@@ -1,7 +1,6 @@
 package com.razinggroups.presentation.di;
 
 
-import com.razinggroups.presentation.ui.CustomerQuery.CustomerQueryFragment;
 import com.razinggroups.presentation.ui.brandCompany.BrandManipulateScreen.BrandManipulateActivity;
 import com.razinggroups.presentation.ui.brandCompany.CompanyManipulateScreen.CompanyManipulateActivity;
 import com.razinggroups.presentation.ui.brandCompany.ListScreen.CompanyListFragment;
@@ -73,7 +72,7 @@ public interface MyComponent {
     void inject(CompanyManipulateActivity companyManipulateActivity);
 
     void inject(EditEmployeeFragment editEmployeeFragment);
-    void inject(CustomerQueryFragment customerQueryFragment);
+   // void inject(CustomerQueryFragment customerQueryFragment);
 
 
     void inject(ManipulateVendorActivity manipulateVendorActivity);

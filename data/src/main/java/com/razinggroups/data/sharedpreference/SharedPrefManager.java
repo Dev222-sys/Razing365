@@ -12,7 +12,7 @@ public class SharedPrefManager {
 
     private static final String NAME="first_name";
     private static final String Logintype="mobile";
-
+    private static final String KYC_ID="kyc_id";
 
 
 
@@ -42,6 +42,26 @@ public class SharedPrefManager {
 
         editor.apply();
         return true;
+    }
+
+    public boolean kyc_id(String kyc_id){
+
+        SharedPreferences sharedPreferences=mct.getSharedPreferences(SHARD_PERFNAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString(KYC_ID,kyc_id);
+        editor.apply();
+        return true;
+    }
+
+    public boolean kyc_id(){
+        SharedPreferences sharedPreferences=mct.getSharedPreferences(SHARD_PERFNAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KYC_ID, null) != null;
+    }
+
+    public String getkyc_id(){
+        SharedPreferences sharedPreferences=mct.getSharedPreferences(SHARD_PERFNAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KYC_ID,null);
+
     }
     public boolean logintype( String logintype ){
 
