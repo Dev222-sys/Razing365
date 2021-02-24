@@ -19,7 +19,7 @@
             android:src="@drawable/profile_grey" />
 
         <TextView
-            android:id="@+id/query_list_name_tv"
+            android:id="@+id/family_list_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -29,10 +29,10 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/query_list_company_email_tv"
+            android:id="@+id/family_list_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/query_list_name_tv"
+            android:layout_below="@+id/family_list_name_tv"
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="16dp"
             android:layout_toEndOf="@+id/leave_list_profile_iv"
@@ -43,7 +43,7 @@
             android:id="@+id/leave_list_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/query_list_company_email_tv"
+            android:layout_below="@+id/family_list_age"
             android:layout_marginBottom="8dp"
             android:text="Title" />
 
@@ -59,6 +59,7 @@
             android:text="Title" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/leave_list_from_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,6 +69,7 @@
             android:textColor="@color/colorBlack" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/query_list_contact_no_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,7 +89,7 @@
             android:textColor="@color/colorBlack" />
 
         <TextView
-            android:id="@+id/leave_list_to_tv"
+            android:id="@+id/familymemberPassport_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/query_list_contact_no_tv"
@@ -107,7 +109,6 @@
 
         <TextView
             android:visibility="gone"
-
             android:id="@+id/leave_list_leave_remaining_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -122,13 +123,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_below="@+id/query_list_submitquery"
-          >
+            >
 
 
             <Button
 
                 android:layout_margin="5dp"
-                android:id="@+id/leave_list_reject_btn"
+                android:id="@+id/familylist_view_btn"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

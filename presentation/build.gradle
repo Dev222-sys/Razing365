@@ -6,7 +6,7 @@ android {
         applicationId "com.raizingGroups.raizing365"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 9
+        versionCode 15
         versionName "1.2.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true

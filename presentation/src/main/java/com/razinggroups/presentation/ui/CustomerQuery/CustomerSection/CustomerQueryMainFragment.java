@@ -9,12 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.razinggroups.data.sharedpreference.SharedPrefManager;
 import com.razinggroups.presentation.R;
 
 import com.razinggroups.presentation.ui.CustomerQuery.QuerySubmit.Query_Submit;
 import com.razinggroups.presentation.ui.CustomerQuery.ViewQuery.ViewQueryFragment;
-
-
 
 
 public class CustomerQueryMainFragment extends Fragment {
@@ -25,8 +24,7 @@ public class CustomerQueryMainFragment extends Fragment {
     }
 
     LinearLayout status, apply;
-    String empId, key = "";
-
+    String usertype;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,15 +32,20 @@ public class CustomerQueryMainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_customer_query_main, container, false);
         status = view.findViewById(R.id.fragment_customer_query_main_status);
         apply = view.findViewById(R.id.fragment_customer_query_main_apply);
-
-        key = getArguments().getString("key");
+         usertype = SharedPrefManager.getInstans(getActivity()).getLogintype();
+     //   key = getArguments().getString("key");
 
 
         status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (key.equals("1")) {
+
+
+
+
+
+                if (usertype.trim().equalsIgnoreCase("Employee")) {
                     FragmentManager manager = getFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
                     ViewQueryFragment viewQueryFragment = new ViewQueryFragment();
@@ -69,8 +72,7 @@ public class CustomerQueryMainFragment extends Fragment {
             public void onClick(View v) {
 
 
-                if (key.equals("1")) {
-
+                if (usertype.trim().equalsIgnoreCase("Employee")) {
 
                     FragmentManager manager = getFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
@@ -98,7 +100,6 @@ public class CustomerQueryMainFragment extends Fragment {
                 }
 
 
-                //  Toast.makeText(getContext(), "Apply", Toast.LENGTH_SHORT).show();
             }
         });
 

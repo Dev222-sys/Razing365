@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.razinggroups.data.sharedpreference.SharedPrefManager;
@@ -36,6 +37,7 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     Button loginBtn;
     FrameLayout progressBarLayout;
     CheckBox checkBox;
+    TextView ForgetPassword;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +53,16 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
         progressBarLayout.setVisibility(View.GONE);
         checkBox = findViewById(R.id.checkBox);
 
-
+        ForgetPassword  = findViewById(R.id.login_activity_et_forgot_password);
         loginViewModel.getCred();
+        ForgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent in =new Intent(LoginActivity.this,Forgetpassword.class);
+                startActivity(in);
+            }
+        });
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,14 +142,14 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
 
 
         } else {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+          /*  Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra("userType", "HR");
             intent.putExtra("userName", "HR");
 
             startActivity(intent);
             finish();
             Toast.makeText(this, "not valid user " + login.getMsg(), Toast.LENGTH_SHORT).show();
-        }
+ */       }
     }
 
     @Override

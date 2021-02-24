@@ -113,6 +113,16 @@
         </android.support.design.widget.TextInputEditText>
     </android.support.design.widget.TextInputLayout>
 
+        <TextView
+            android:id="@+id/login_activity_et_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+
+            android:text="Forget Password?"
+            android:textColor="@color/colorBlue"
+            />
         <Button
             android:id="@+id/login_activity_login_btn"
             android:layout_width="match_parent"
@@ -123,15 +133,6 @@
             android:text="Login"
             android:textColor="@color/colorWhite" />
 
-        <TextView
-            android:id="@+id/login_activity_et_forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="10dp"
-            android:text="Forget Password?"
-            android:textColor="@color/colorBlack"
-            android:visibility="gone" />
 
         <CheckBox
             android:id="@+id/checkBox"

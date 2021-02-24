@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+
+            <TextView
+
+                android:id="@+id/fragment_employee_detail_nametv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/full_name" />
+
+            <EditText
+                android:id="@+id/GI_customer_query_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Full Name as Passport"
+                android:padding="10dp" />
+
+
+            <TextView
+                android:id="@+id/fragment_employee_detail_officialemailidtv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Mobile No." />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:orientation="horizontal"
+
+               >
+
+            <!--    <EditText
+                    android:id="@+id/GK_country_no_code_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="+91"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp"
+
+                    />-->
+
+                <EditText
+                    android:id="@+id/GK__customer_query_mobileetno"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:hint="Enter Mobile Number"
+                    android:inputType="number"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/customer_nationality_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Nationality" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:orientation="horizontal"
+
+               >
+
+
+                <EditText
+                    android:id="@+id/Gk_country_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+
+                    android:hint=" Nationality"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/customer_landline_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Landline Number" />
+
+            <!--     <EditText
+                     android:id="@+id/customer_laindline_et"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginVertical="10dp"
+                     android:layout_marginLeft="20dp"
+                     android:layout_marginRight="20dp"
+
+                     android:background="@drawable/round_grey_corners"
+                     android:hint="Enter Landline Number"
+                     android:padding="10dp" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:orientation="horizontal"
+
+              >
+                <!--   android:weightSum="5"
+
+                 <com.hbb20.CountryCodePicker
+                      android:id="@+id/country_landline_code"
+                      android:layout_width="0dp"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      app:textSize="16dp"
+
+                      android:layout_height="match_parent"
+                      app:defaultNameCode="in" />-->
+<!--
+                <EditText
+                    android:id="@+id/Gk_country_landline_code_et"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="code"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp"
+
+                    />-->
+
+                <EditText
+                    android:id="@+id/GK_customer_laindline_et"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:hint="Enter Landline Number"
+                    android:inputType="number"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/customer_passport_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Passport Number" />
+
+            <EditText
+                android:id="@+id/Gk_customer_passport_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Passport Number"
+                android:padding="10dp" />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Email Address" />
+
+            <EditText
+                android:id="@+id/Gk_customer_emailadress_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Email Address"
+                android:inputType="textWebEmailAddress"
+                android:padding="10dp" />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Permanent Address" />
+
+            <EditText
+                android:id="@+id/GK_customer_permanentadress_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Permanent Address"
+                android:padding="10dp" />
+
+
+            <EditText
+                android:id="@+id/Gk_customer_permanentadress_postal_et"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+
+                android:hint="Enter Postal Code"
+                android:inputType="number"
+                android:padding="10dp" />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text=" Address of Residency" />
+
+            <EditText
+                android:id="@+id/Gk_customer_resiencyadress_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Residency Address"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/Gk_customer_resiencyadress_postal_et"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_grey_corners"
+                android:hint="Enter Postal Code"
+                android:inputType="number"
+                android:padding="10dp" />
+
+
+
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/generalQueryLl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                >
+
+
+                <Button
+                    android:id="@+id/generalQuerysubmit"
+
+                    android:layout_margin="5dp"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorGreen"
+                    android:text="Submit"
+                    android:textColor="@color/colorWhite" />
+                <Button
+                    android:id="@+id/generalQuerydelete"
+
+                    android:layout_margin="5dp"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorRed"
+                    android:text="Delete"
+                    android:textColor="@color/colorWhite" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</FrameLayout>

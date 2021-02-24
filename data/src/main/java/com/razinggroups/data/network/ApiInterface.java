@@ -68,6 +68,14 @@ public interface ApiInterface {
     Single<LoginNw> login(@Query("uemail") String userName, @Query("pass") String passsword);
 
 
+    //Login
+
+    @FormUrlEncoded
+    @POST("password/forgetpassword.php")
+    Call<ResponseBody> forgetpassword(
+            @Field("uemail") String uemail
+    );
+
     //Gernal form Queryy
     @FormUrlEncoded
     @POST("customer_query/create.php/")
@@ -95,6 +103,28 @@ public interface ApiInterface {
             @Field("passport_no") String passport_no,
             @Field("age") String age,
             @Field("passport_copy") String passport_copy);
+
+    // Family Form Queryy
+    @FormUrlEncoded
+    @POST("customer_query/update_familydetails.php/")
+    Call<ResponseBody> updateQueryFamily(
+            @Field("id") String id,
+            @Field("relation") String relation,
+            @Field("fullname") String fullname,
+            @Field("passport_no") String passport_no,
+            @Field("age") String age,
+            @Field("passport_copy") String passport_copy);
+
+
+
+    // delete_familydetails Form Queryy
+
+    @FormUrlEncoded
+    @POST("customer_query/delete_familydetails.php/")
+    Call<ResponseBody> deleteQueryFamily(
+            @Field("id") String id
+    );
+
 
     // submitQueryFinal
     @FormUrlEncoded
@@ -128,9 +158,95 @@ public interface ApiInterface {
 
     );
 
+    //getgernalinfromation
+    @FormUrlEncoded
+    @POST("customer_query/read_byid.php/")
+    Call<ResponseBody> getgernalinfromation(
+            @Field("kyc_id") String id
+
+    );
+    //updattegernalinfromation
+
+
+    @FormUrlEncoded
+    @POST("customer_query/update_basicdetails.php")
+    Call<ResponseBody> Update_Gernal_infromation(
+            @Field("kyc_id") String kyc_id,
+            @Field("created_by") String created_by,
+            @Field("fullname") String fullname,
+            @Field("email") String email,
+            @Field("mobile") String mobile,
+            @Field("landline") String landline,
+            @Field("passport") String passport,
+            @Field("nationality") String nationality,
+            @Field("permanent_address") String permanent_address,
+            @Field("pa_pincode") String pa_pincode,
+            @Field("residency_address") String residency_address,
+            @Field("ra_pincode") String ra_pincode);
+
+
+
+
+    //updatekycinfromation
+    @FormUrlEncoded
+    @POST("customer_query/update_question_details.php/")
+    Call<ResponseBody> update_kyc_infromation(
+            @Field("kyc_id") String kyc_id,
+            @Field("single_applicant") String single_applicant,
+            @Field("main_applicant_name") String main_applicant_name,
+            @Field("apply_family") String apply_family,
+            @Field("employeement_type") String employeement_type,
+            @Field("name_of_org") String name_of_org,
+            @Field("uk_visa_status") String uk_visa_status,
+            @Field("uk_year") String uk_year,
+            @Field("uk_reasion") String uk_reasion,
+            @Field("european_visa_status") String european_visa_status,
+            @Field("european_visa_year") String european_visa_year,
+            @Field("european_visa_reasion") String european_visa_reasion,
+            @Field("usa_visa_status") String usa_visa_status,
+            @Field("usa_year") String usa_year,
+            @Field("usa_reasion") String usa_reasion,
+            @Field("interested_type") String interested_type,
+
+            @Field("migrate_plan") String migrate_plan,
+
+            @Field("investment_budget") String investment_budget,
+            @Field("reference_through") String reference_through,
+            @Field("platform") String platform,
+            @Field("contact_through") String contact_through,
+            @Field("subscribe_email") String subscribe_email
+
+
+    );
+
+    //delete delete_userdetails Query
+
+    @FormUrlEncoded
+    @POST("customer_query/delete_userdetails.php/")
+    Call<ResponseBody> delete_userdetails(
+            @Field("kyc_id") String id
+
+    );
+
     //get Query data
     @GET("customer_query/read.php/")
     Call<ResponseBody> readQuery(
+    );
+
+    //family_All_deatils
+    @FormUrlEncoded
+    @POST("customer_query/read_family.php/")
+    Call<ResponseBody> familydetils(
+            @Field("kyc_id") String id
+
+    );
+    //only particular person
+
+    @FormUrlEncoded
+    @POST("customer_query/read_familybyid.php/")
+    Call<ResponseBody> familyparticulardetils(
+            @Field("id") String id
+
     );
 
     //delete Query
@@ -151,6 +267,7 @@ public interface ApiInterface {
     //My Task
     @GET("mytask/read.php")
     Single<FetchAllMyTaskNw> fetchAllMyTask();
+
 
     @POST("mytask/create.php")
     Single<MessageNw> createMyTask(@Body CreateMyTaskRequestNw createMyTaskRequestNw);

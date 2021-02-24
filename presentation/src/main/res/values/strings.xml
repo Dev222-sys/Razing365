@@ -65,7 +65,7 @@
 
     <string-array name="residency_passport">
         <item>Please Select</item>
-        <item>Residency </item>
+        <item>Residency</item>
         <item>Second Passport</item>
 
     </string-array>
@@ -73,9 +73,8 @@
 
     <string-array name="hear_about">
         <item>Please Select</item>
-
         <item>Social Media</item>
-        <item>Print Advertisement </item>
+        <item>Print Advertisement</item>
         <item>Channel Partners</item>
         <item>Friends or Colleagues</item>
 
@@ -88,20 +87,19 @@
         <item>Instagram</item>
         <item>LinkedIn</item>
         <item>Snapchat</item>
-
-        <item>	YouTube</item>
-        <item>	WhatsApp</item>
+        <item>YouTube</item>
+        <item>WhatsApp</item>
         <item>Instagram</item>
     </string-array>
 
 
     <string-array name="conacted_spinner">
         <item>Please Select</item>
-        <item>	Email</item>
-        <item>	SMS</item>
-        <item>	Call</item>
-        <item>	Video Call</item>
-        <item>	WhatsApp</item>
+        <item>Email</item>
+        <item>SMS</item>
+        <item>Call</item>
+        <item>Video Call</item>
+        <item>WhatsApp</item>
 
     </string-array>
 
@@ -156,6 +154,9 @@
 </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="Email">    Enter the email address associated with your account
+</string>
+    <string name="link">    We will email you a link to reset your password
+</string>
 
 </resources>

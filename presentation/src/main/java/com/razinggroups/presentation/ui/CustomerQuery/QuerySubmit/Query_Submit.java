@@ -67,12 +67,12 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
     String full_namee, mobile_noo, country_code,landline_noo, passport_noo, emaill, p_addresss, r_addresss,p_address_postal_codee,r_address_postal_codee,country_landline_code_ett;
 
     Button gernal_submit_btn;
-    Customer customer = new Customer();
+
     TextView lead_type_tv;
     LinearLayout applicant_or_not, uk_visa_spinner_ly, european_visa_ly, usa_visa_ly;
 
     EditText customer_work_org_name_et, customer_uk_year_et, customer_Reason_for_refusal_et,
-            customer_migrate_et,customer_budget_et,customer_european_year_et,customer_european_for_refusal_et,customer_usa_year_et,customer_usa_for_refusal_et;
+            customer_migrate_et,customer_budget_et,customer_european_year_et,customer_european_for_refusal_et,customer_usa_year_et,customer_usa_for_refusal_et,print_advertisement_et;
     String  customer_work_org,uk_year,uk_reason,european_year,european_reason,usa_year,usa_reason ,customer_budget,customer_migrate;
     FloatingActionButton submitgernalform,
             submitSingleapplicantform,
@@ -88,7 +88,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
     CountryCodePicker cuntry_nationality,country_no_code;
 
     CountryCurrencyButton customer_budget_currency_picker;
-    TextView country_tv,country_no_code_tv,customer_budget_tv;
+    TextView country_tv,country_no_code_tv,customer_budget_tv,tv_hint;
 
     LinearLayout socialmedia_ll ,print_advertisement_ll,channel_partners_ll,friend_collagues_ll;
 
@@ -208,7 +208,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         family_name=view.findViewById(R.id.familycustomer_query_name_et);
         family_passport=view.findViewById(R.id.familycustomer_passport_et);
         family_age=view.findViewById(R.id.familycustomer_age_et);
-
+        print_advertisement_et=view.findViewById(R.id.print_advertisement_et);
         //cuntry_nationality code picker
         cuntry_nationality=view.findViewById(R.id.cuntry_nationality);
         country_tv=view.findViewById(R.id.country_tv);
@@ -220,13 +220,13 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
         customer_budget_tv=view.findViewById(R.id.customer_budget_tv);
         customer_budget_currency_picker=view.findViewById(R.id.customer_budget_currency_picker);
         back_arrowimage=view.findViewById(R.id.back_arrowimage);
-
+        tv_hint=view.findViewById(R.id.tv_hint);
 
         //Liner Layout
         socialmedia_ll=view.findViewById(R.id.socialmedia_ll);
         print_advertisement_ll=view.findViewById(R.id.print_advertisement_ll);
-        channel_partners_ll=view.findViewById(R.id.channel_partners_ll);
-        friend_collagues_ll=view.findViewById(R.id.friend_collagues_ll);
+      //  channel_partners_ll=view.findViewById(R.id.channel_partners_ll);
+       // friend_collagues_ll=view.findViewById(R.id.friend_collagues_ll);
         spinnerdata();
 
 
@@ -471,7 +471,12 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             @Override
             public void onClick(View v) {
 
+                if (social_media.equals("null"))
+                {
+                    social_media=print_advertisement_et.getText().toString().trim();
 
+
+                }
 
 
 
@@ -836,8 +841,8 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setIcon(R.drawable.logo_black)
-                .setTitle(title)
-                .setMessage("Do you  want to add  another family details?")
+                .setTitle("Do you  want to add  another family details ?")
+
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                 {
@@ -1009,7 +1014,7 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
 
                      realtion = realtion_ship.getSelectedItem().toString();
-                    Toast.makeText(getActivity(), realtion+"", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), realtion+"", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -1042,8 +1047,8 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
                 socialmedia_ll.setVisibility(View.GONE);
                 print_advertisement_ll.setVisibility(View.GONE);
-                channel_partners_ll.setVisibility(View.GONE);
-                friend_collagues_ll.setVisibility(View.GONE);
+               // channel_partners_ll.setVisibility(View.GONE);
+             //   friend_collagues_ll.setVisibility(View.GONE);
 
                 if (position == 0) {
 
@@ -1051,23 +1056,33 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
 
 
                 } else if (position==1){
+
                     hear_aboutt=hear_about.getSelectedItem().toString();
                     socialmedia_ll.setVisibility(View.VISIBLE);
 
                 }else if (position==2)
                 {
                     print_advertisement_ll.setVisibility(View.VISIBLE);
+                    tv_hint.setText("Print Advertisement");
+                    print_advertisement_et.setHint("Where?");
                     hear_aboutt=hear_about.getSelectedItem().toString();
                 }
 
                 else if (position==3)
                 {
-                    channel_partners_ll.setVisibility(View.VISIBLE);
+                    print_advertisement_ll.setVisibility(View.VISIBLE);
+                    tv_hint.setText("Channel Partners");
+                    print_advertisement_et.setHint("Who? Which Organization?");
                     hear_aboutt=hear_about.getSelectedItem().toString();
+
+
                 }
                 else if (position==4)
                 {
-                    friend_collagues_ll.setVisibility(View.VISIBLE);
+
+                    print_advertisement_ll.setVisibility(View.VISIBLE);
+                    tv_hint.setText("Friends OR Colleagues");
+                    print_advertisement_et.setHint("Who?");
                     hear_aboutt=hear_about.getSelectedItem().toString();
                 }
 
@@ -1096,12 +1111,12 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
                 if (position == 1) {
                     apply_applicant=as_single_spinner.getSelectedItem().toString();
                     applicant_or_not.setVisibility(View.VISIBLE);
-                    Toast.makeText(getActivity(), apply_applicant+"", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getActivity(), apply_applicant+"", Toast.LENGTH_SHORT).show();
                 } else if (position==2){
                     apply_applicant=as_single_spinner.getSelectedItem().toString();
                     applicant_or_not.setVisibility(View.GONE);
 
-                    Toast.makeText(getActivity(), apply_applicant+"", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), apply_applicant+"", Toast.LENGTH_SHORT).show();
 
                     }
                 else {
@@ -1134,13 +1149,13 @@ public class Query_Submit extends Fragment  implements AdapterView.OnItemSelecte
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if (position == 1) {
                     main_Applicent=as_mentioned_spinner.getSelectedItem().toString();
-                    Toast.makeText(getContext(), main_Applicent+"", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getContext(), main_Applicent+"", Toast.LENGTH_SHORT).show();
                  //   apply_applicant=as_mentioned_spinner.getSelectedItem().toString();
 
                 } else if (position==2){
              //       apply_applicant=as_mentioned_spinner.getSelectedItem().toString();
                     main_Applicent=as_mentioned_spinner.getSelectedItem().toString();
-                    Toast.makeText(getContext(), main_Applicent+"", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(getContext(), main_Applicent+"", Toast.LENGTH_SHORT).show();
 
                 }
 

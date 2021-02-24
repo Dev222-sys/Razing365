@@ -14,8 +14,17 @@ public class Customer {
     public String reference;
     public String address;
     public String profession;
+    public String create_at;
 
-    public Customer(String id, String lead_type, String name, String company_email, String mobile, String landline, String passport_no, String nationality, String enquiry_details, String reference, String address, String profession) {
+    public String getCreate_at() {
+        return create_at;
+    }
+
+    public void setCreate_at(String create_at) {
+        this.create_at = create_at;
+    }
+
+    public Customer(String id, String lead_type, String name, String company_email, String mobile, String landline, String passport_no, String nationality, String enquiry_details, String reference, String address, String profession, String create_at) {
         this.id = id;
         this.lead_type = lead_type;
         this.name = name;
@@ -28,8 +37,8 @@ public class Customer {
         this.reference = reference;
         this.address = address;
         this.profession = profession;
+        this.create_at = create_at;
     }
-
 
     public Customer() {
 
