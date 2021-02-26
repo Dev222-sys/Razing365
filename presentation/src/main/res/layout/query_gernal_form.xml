@@ -19,8 +19,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:background="@color/yellow"
+                android:layout_height="120dp"
                 android:gravity="center_vertical|start"
                 android:orientation="vertical"
                 android:padding="20dp">
@@ -31,7 +30,7 @@
                     android:textSize="29sp"
                     android:text="@string/query"
 
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/colorBlack"
                     android:textStyle="bold"
                     app:textAllCaps="true"/>
                 <TextView
@@ -39,17 +38,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/general_information"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/colorBlack"
                     android:textSize="22sp"
                   />
 
 
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="15dp"
+                    android:background="@color/colorMidGrey" />
 
             </LinearLayout>
             <TextView
 
-                android:layout_marginTop="20dp"
                 android:id="@+id/fragment_employee_detail_nametv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

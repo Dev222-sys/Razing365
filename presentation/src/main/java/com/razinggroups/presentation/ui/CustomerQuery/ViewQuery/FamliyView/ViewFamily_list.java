@@ -1,5 +1,6 @@
 package com.razinggroups.presentation.ui.CustomerQuery.ViewQuery.FamliyView;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -111,6 +112,14 @@ public class ViewFamily_list extends Fragment {
                         s = response.body().string();
                         //Toast.makeText(getActivity(), s+"", Toast.LENGTH_SHORT).show();
                         JSONObject jsonObject = new JSONObject(s);
+
+                        String count=jsonObject.getString("count");
+                        if (count.equals("0"))
+                        {
+
+                            onCreatealert("No family details found ");
+
+                        }else {
                         JSONArray jsonArray = jsonObject.getJSONArray("family_records");
                        for (int i = 0; i <= jsonArray.length(); i++) {
 
@@ -188,33 +197,34 @@ public class ViewFamily_list extends Fragment {
                         recyclerView.setHasFixedSize(true);
 
 
+                           search_input.addTextChangedListener(new TextWatcher() {
+                               @Override
+                               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+                               }
+
+                               @Override
+                               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                   familyListAdapter.getFilter().filter(s);
+                                   search = s;
+                               }
+
+                               @Override
+                               public void afterTextChanged(Editable s) {
+
+                               }
+                           });
+
+
+                           progressBar.setVisibility(View.GONE);
+                           textView.setVisibility(View.GONE);
+                       }
 
 
 
                         /*------------------Searching Filter---------------------
                          */
-                        search_input.addTextChangedListener(new TextWatcher() {
-                            @Override
-                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                            }
-
-                            @Override
-                            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                familyListAdapter.getFilter().filter(s);
-                                search = s;
-                            }
-
-                            @Override
-                            public void afterTextChanged(Editable s) {
-
-                            }
-                        });
-
-
-                        progressBar.setVisibility(View.GONE);
-                        textView.setVisibility(View.GONE);
                        }
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
@@ -240,5 +250,19 @@ public class ViewFamily_list extends Fragment {
             }
         });
 
+    }
+
+    public void onCreatealert(String message) {
+
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(getContext());
+        builder.setMessage(message).setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //do things
+                dialog.dismiss();
+                getActivity().onBackPressed();
+            }
+        });
+        android.support.v7.app.AlertDialog alert = builder.create();
+        alert.show();
     }
 }
