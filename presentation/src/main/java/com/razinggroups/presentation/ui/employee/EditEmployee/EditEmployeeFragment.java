@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.razinggroups.presentation.MainApplication;
 import com.razinggroups.presentation.R;
@@ -51,7 +52,7 @@ public class EditEmployeeFragment extends BaseFragment<EditEmployeeViewModel> im
     String empId = "";
 
     ProgressBar progressBar;
-   EmployeeDetail record = new EmployeeDetail();
+    EmployeeDetail record = new EmployeeDetail();
 
     EditText nameEt, designationEt, officelandlineEt, offcialEmailId, personalEmailId, mobile, location, officeAddress, residenceAddress, salary, emergencyContactName, EmergencyContactNo, dateOfBirth;
     EditText dateOfJoining, aadharNo, panNo;
@@ -62,6 +63,7 @@ public class EditEmployeeFragment extends BaseFragment<EditEmployeeViewModel> im
 
     Spinner statusSpinner, brandSpinner;
     List<ItemData> spinnerDataList = new ArrayList<>();
+    String OnlineEmployee = "0";
 
 
     @Override
@@ -83,9 +85,23 @@ public class EditEmployeeFragment extends BaseFragment<EditEmployeeViewModel> im
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit_employee, container, false);
+        initViews(view);
+
+        try {
+            OnlineEmployee = getArguments().getString("OnlineEmployee");
+            if (OnlineEmployee.equals("1")) {
+                submitBtn.setVisibility(View.GONE);
+                //Toast.makeText(getContext(), OnlineEmployee + "", Toast.LENGTH_SHORT).show();
+
+                deleteBtn.setVisibility(View.GONE);
+
+            }
+        } catch (Exception e) {
+
+        }
+
 
         empId = getArguments().getString("employeeId");
-        initViews(view);
         viewModel.fetchBrand();
 
 

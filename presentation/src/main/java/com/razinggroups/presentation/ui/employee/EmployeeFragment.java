@@ -44,7 +44,7 @@ public class EmployeeFragment extends BaseFragment<EmployeeViewModel> implements
     RecyclerView recyclerView;
     ProgressBar progressBar;
 
-    String type = "";
+    String type = "",OnlineEmployee="0";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +59,13 @@ public class EmployeeFragment extends BaseFragment<EmployeeViewModel> implements
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_employee, container, false);
         initViews(view);
+        try {
+            OnlineEmployee= getArguments().getString("OnlineEmployee");
+        }catch (Exception e)
+        {
+
+        }
+
         type = getArguments().getString("type");
         employeeViewModel.fetchAllEmployees(type);
         MainActivity activity = (MainActivity) getActivity();
@@ -146,6 +153,8 @@ public class EmployeeFragment extends BaseFragment<EmployeeViewModel> implements
 
     @Override
     public void onItemClick(String empId) {
+
+
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         EditEmployeeFragment employeeLeaveMainFragment = new EditEmployeeFragment();
@@ -154,6 +163,8 @@ public class EmployeeFragment extends BaseFragment<EmployeeViewModel> implements
         transaction.addToBackStack(null);
         Bundle bundle = new Bundle();
         bundle.putString("employeeId", empId);
+        bundle.putString("employeeId", empId);
+        bundle.putString("OnlineEmployee", OnlineEmployee);
         employeeLeaveMainFragment.setArguments(bundle);
 
         transaction.commit();

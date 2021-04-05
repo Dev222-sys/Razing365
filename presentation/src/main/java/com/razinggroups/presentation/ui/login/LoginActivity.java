@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.irozon.sneaker.Sneaker;
 import com.razinggroups.data.sharedpreference.SharedPrefManager;
 import com.razinggroups.domain.model.Credentials;
 import com.razinggroups.domain.model.Login;
@@ -74,7 +75,7 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
                 } else {
                     hideKeyboard(LoginActivity.this);
                     progressBarLayout.setVisibility(View.VISIBLE);
-                    loginViewModel.login(userNameEt.getText().toString(), passwordEt.getText().toString());
+                    loginViewModel.login(userNameEt.getText().toString().trim(), passwordEt.getText().toString().trim());
                     }
             }
         });
@@ -102,7 +103,7 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
 
         progressBarLayout.setVisibility(View.GONE);
         if (checkBox.isChecked()) {
-            loginViewModel.setCred(userNameEt.getText().toString(), passwordEt.getText().toString());
+            loginViewModel.setCred(userNameEt.getText().toString().trim(), passwordEt.getText().toString().trim());
         } else {
             loginViewModel.setCred("", "");
 
@@ -142,6 +143,13 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
 
 
         } else {
+           // Toast.makeText(this,  login.getMsg(), Toast.LENGTH_SHORT).show();
+
+            Sneaker.with(this)
+                    .setTitle( login.getMsg())
+                    .setMessage("")
+                    .sneakError();
+
           /*  Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra("userType", "HR");
             intent.putExtra("userName", "HR");
@@ -155,7 +163,15 @@ public class LoginActivity extends BaseActivity<LoginViewModel> implements Login
     @Override
     public void onError(String toString) {
         progressBarLayout.setVisibility(View.GONE);
-        Toast.makeText(this, "Error in response from back end " + toString, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Error in response from back end " + toString, Toast.LENGTH_SHORT).show();
+
+
+        Sneaker.with(this)
+                .setTitle( "ID does not exist.")
+                .setMessage("")
+                .sneakError();
+
+
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -13,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -441,10 +443,39 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        Fragment fr=getSupportFragmentManager().findFragmentById(R.id.activity_main_frame);
+        String fragmentName = fr.getClass().getSimpleName();
+        Log.d("fragment name", "aa"+fragmentName);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+
+        } else if (fragmentName.equals("DashBoardFragment")){
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Really Exit?")
+                    .setMessage("Are you sure you want to exit?")
+                    .setNegativeButton(android.R.string.no, null)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface arg0, int arg1) {
+/*
+                            Intent a = new Intent(Intent.ACTION_MAIN);
+                            a.addCategory(Intent.CATEGORY_HOME);
+                            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(a);*/
+
+                            MainActivity.super.onBackPressed();
+
+                        }
+                    }).create().show();
+
+
+
+        }
+        else {
+            openDashBoardFragment();
         }
     }
 
@@ -599,6 +630,32 @@ public class MainActivity extends BaseActivity<MainViewModel> implements MainNav
         Toast.makeText(this, "ProjectTraking", Toast.LENGTH_SHORT).show();
         headerTitle.setText("PROJECT TRACKING");
     }
+/*
+    @Override
+    public void onBackPressed() {
+
+        *//*
+         *//*
 
 
+        Fragment fr=getSupportFragmentManager().findFragmentById(R.id.contentPanel);
+        String fragmentName = fr.getClass().getSimpleName();
+        //Log.d("fragment name", "aa"+fragmentName);
+        if (fragmentName.equals("HomeFragment")){
+
+            Intent a = new Intent(Intent.ACTION_MAIN);
+            a.addCategory(Intent.CATEGORY_HOME);
+            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(a);
+        }
+        else {
+            HomeFragment appNewsHome1Fragment = new HomeFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.contentPanel, appNewsHome1Fragment);
+            transaction.commit();
+        }
+        //super.onBackPressed();
+
+    }*/
 }

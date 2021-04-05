@@ -162,6 +162,8 @@ public class DashBoardFragment extends BaseFragment<DashBoardViewModel> implemen
 
         Bundle bundle = new Bundle();
         bundle.putString("type", str);
+        bundle.putString("OnlineEmployee", "1");
+
         holidayListFragment.setArguments(bundle);
 
         transaction.commit();

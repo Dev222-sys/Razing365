@@ -68,7 +68,7 @@ public interface ApiInterface {
     Single<LoginNw> login(@Query("uemail") String userName, @Query("pass") String passsword);
 
 
-    //Login
+    //forgetpassword
 
     @FormUrlEncoded
     @POST("password/forgetpassword.php")
